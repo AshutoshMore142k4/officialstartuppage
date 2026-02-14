@@ -136,10 +136,14 @@ export default function PricingSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.4 }}
               className={cn(
-                "glass-card rounded-2xl p-6 flex flex-col relative",
+                "group glass-card rounded-2xl p-6 flex flex-col relative overflow-hidden",
                 plan.popular && "border-primary/30 glow-primary-sm"
               )}
             >
+              {/* Top neon glow line */}
+              <span className="absolute h-px opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out inset-x-0 top-0 bg-gradient-to-r w-3/4 mx-auto from-transparent via-primary to-transparent" />
+              {/* Bottom neon glow line */}
+              <span className="absolute h-px opacity-0 group-hover:opacity-30 transition-all duration-500 ease-in-out inset-x-0 bottom-0 bg-gradient-to-r w-3/4 mx-auto from-transparent via-primary to-transparent" />
               {plan.popular && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                   <span className="glass-subtle text-xs font-medium text-primary px-3 py-1 rounded-full">
