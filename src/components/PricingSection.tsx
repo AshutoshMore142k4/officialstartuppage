@@ -145,8 +145,8 @@ export default function PricingSection() {
               {/* Bottom neon glow line */}
               <span className="absolute h-px opacity-0 group-hover:opacity-30 transition-all duration-500 ease-in-out inset-x-0 bottom-0 bg-gradient-to-r w-3/4 mx-auto from-transparent via-primary to-transparent" />
               {plan.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="glass-subtle text-xs font-medium text-primary px-3 py-1 rounded-full">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2">
+                  <span className="glass-subtle text-xs font-medium text-primary px-3 py-1 rounded-b-full">
                     Most Popular
                   </span>
                 </div>
