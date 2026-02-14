@@ -4,84 +4,45 @@
 
 @layer base {
   :root {
-    --background: 220 20% 97%;
-    --foreground: 220 30% 10%;
-    --card: 0 0% 100%;
-    --card-foreground: 220 30% 10%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 30% 10%;
-    --primary: 217 91% 60%;
+    --background: 270 30% 6%;
+    --foreground: 270 10% 92%;
+    --card: 270 25% 9%;
+    --card-foreground: 270 10% 92%;
+    --popover: 270 25% 9%;
+    --popover-foreground: 270 10% 92%;
+    --primary: 270 70% 65%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 220 14% 90%;
-    --secondary-foreground: 220 30% 10%;
-    --muted: 220 14% 90%;
-    --muted-foreground: 220 10% 46%;
-    --accent: 217 91% 60%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 220 13% 87%;
-    --input: 220 13% 87%;
-    --ring: 217 91% 60%;
-    --radius: 0.625rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217 91% 60%;
-    --hero-glow: 217 91% 60%;
-    --hero-glow-secondary: 199 89% 48%;
-    --surface-elevated: 222 30% 12%;
-    --gradient-start: 217 91% 60%;
-    --gradient-end: 199 89% 48%;
-  }
-
-  .dark {
-    --background: 222 47% 6%;
-    --foreground: 210 40% 96%;
-    --card: 222 40% 9%;
-    --card-foreground: 210 40% 96%;
-    --popover: 222 40% 9%;
-    --popover-foreground: 210 40% 96%;
-    --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 222 30% 14%;
-    --secondary-foreground: 210 40% 96%;
-    --muted: 222 30% 14%;
-    --muted-foreground: 215 20% 55%;
-    --accent: 217 91% 60%;
+    --secondary: 270 20% 14%;
+    --secondary-foreground: 270 10% 92%;
+    --muted: 270 15% 16%;
+    --muted-foreground: 270 10% 55%;
+    --accent: 280 60% 55%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
-    --border: 222 20% 18%;
-    --input: 222 20% 18%;
-    --ring: 217 91% 60%;
-    --sidebar-background: 222 47% 6%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 217 91% 60%;
+    --border: 270 15% 16%;
+    --input: 270 15% 16%;
+    --ring: 270 70% 65%;
+    --radius: 0.625rem;
+    --sidebar-background: 270 30% 6%;
+    --sidebar-foreground: 270 10% 92%;
+    --sidebar-primary: 270 70% 65%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 222 30% 12%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 222 20% 18%;
-    --sidebar-ring: 217 91% 60%;
-    --hero-glow: 217 91% 60%;
-    --hero-glow-secondary: 199 89% 48%;
-    --surface-elevated: 222 30% 12%;
-    --gradient-start: 217 91% 60%;
-    --gradient-end: 199 89% 48%;
+    --sidebar-accent: 270 20% 14%;
+    --sidebar-accent-foreground: 270 10% 92%;
+    --sidebar-border: 270 15% 16%;
+    --sidebar-ring: 270 70% 65%;
+    --hero-glow: 270 70% 65%;
+    --hero-glow-secondary: 300 60% 55%;
+    --surface-elevated: 270 25% 11%;
+    --gradient-start: 270 70% 65%;
+    --gradient-end: 30 80% 70%;
   }
 }
 
 @layer base {
   * {
     @apply border-border;
-  }
-
-  html {
-    @apply dark;
   }
 
   body {
@@ -91,23 +52,25 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[hsl(var(--gradient-start))] to-[hsl(var(--gradient-end))];
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      hsl(270, 70%, 75%),
+      hsl(320, 60%, 70%),
+      hsl(30, 80%, 70%)
+    );
   }
 
   .glow-primary {
-    box-shadow: 0 0 40px -10px hsl(var(--hero-glow) / 0.4);
+    box-shadow: 0 0 40px -10px hsl(270 70% 65% / 0.4);
   }
 
   .glow-primary-sm {
-    box-shadow: 0 0 20px -5px hsl(var(--hero-glow) / 0.3);
+    box-shadow: 0 0 20px -5px hsl(270 70% 65% / 0.3);
   }
-}
 
-@keyframes grid-scroll {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(calc(var(--cell-size)));
+  .border-glow {
+    border-color: hsl(270 70% 65% / 0.3);
+    box-shadow: 0 0 15px -3px hsl(270 70% 65% / 0.2), inset 0 0 15px -3px hsl(270 70% 65% / 0.05);
   }
 }

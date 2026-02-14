@@ -5,8 +5,8 @@ export function CTASection() {
   return (
     <section id="contact" className="py-24 relative">
       <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
-        <div className="rounded-2xl border border-border bg-card p-12 md:p-16 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5" />
+        <div className="rounded-2xl border border-primary/20 bg-card p-12 md:p-16 relative overflow-hidden glow-primary">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(270_70%_65%_/_0.08),transparent_70%)]" />
           <div className="relative z-10">
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
               Ready to transform your business with AI?

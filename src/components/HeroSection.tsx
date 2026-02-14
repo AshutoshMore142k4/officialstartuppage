@@ -8,19 +8,16 @@ const RetroGrid = ({
   angle = 65,
   cellSize = 60,
   opacity = 0.5,
-  lightLineColor = "gray",
   darkLineColor = "gray",
 }) => {
   const gridStyles = {
     "--grid-angle": `${angle}deg`,
     "--cell-size": `${cellSize}px`,
-    "--opacity": opacity,
-    "--light-line": lightLineColor,
     "--dark-line": darkLineColor,
   } as React.CSSProperties;
 
   return (
-    <div className={cn("pointer-events-none absolute size-full overflow-hidden [perspective:200px]")} style={{ ...gridStyles, opacity: opacity as number }}>
+    <div className="pointer-events-none absolute size-full overflow-hidden [perspective:200px]" style={{ ...gridStyles, opacity }}>
       <div className="absolute inset-0 [transform:rotateX(var(--grid-angle))]">
         <div className="animate-grid [background-image:linear-gradient(to_right,var(--dark-line)_1px,transparent_0),linear-gradient(to_bottom,var(--dark-line)_1px,transparent_0)] [background-repeat:repeat] [background-size:var(--cell-size)_var(--cell-size)] [height:300vh] [inset:0%_0px] [margin-left:-200%] [transform-origin:100%_0_0] [width:600vw]" />
       </div>
@@ -35,7 +32,7 @@ export function HeroSection() {
       {/* Ethereal Shadow Background */}
       <div className="absolute inset-0 z-0">
         <EtheralShadow
-          color="hsl(217, 91%, 30%)"
+          color="hsl(270, 50%, 20%)"
           animation={{ scale: 80, speed: 60 }}
           noise={{ opacity: 0.5, scale: 1 }}
           sizing="fill"
@@ -43,18 +40,18 @@ export function HeroSection() {
       </div>
 
       {/* Radial gradient overlay */}
-      <div className="absolute top-0 z-[1] h-full w-full bg-[radial-gradient(ellipse_20%_80%_at_50%_-20%,hsl(217_91%_60%_/_0.15),transparent)]" />
+      <div className="absolute top-0 z-[1] h-full w-full bg-[radial-gradient(ellipse_40%_60%_at_50%_-10%,hsl(270_70%_40%_/_0.25),transparent)]" />
 
       <section className="relative z-[2] max-w-full mx-auto">
-        <RetroGrid angle={65} opacity={0.3} cellSize={50} darkLineColor="hsl(217, 91%, 60%, 0.15)" />
-        <div className="max-w-screen-xl z-10 mx-auto px-4 py-28 md:py-36 gap-12 md:px-8">
+        <RetroGrid angle={65} opacity={0.2} cellSize={50} darkLineColor="hsl(270, 70%, 65%, 0.12)" />
+        <div className="max-w-screen-xl z-10 mx-auto px-4 py-28 md:py-40 gap-12 md:px-8">
           <div className="space-y-6 max-w-3xl leading-0 lg:leading-5 mx-auto text-center">
-            <h1 className="text-sm text-muted-foreground group mx-auto px-5 py-2 bg-secondary/50 border border-border rounded-3xl w-fit">
+            <h1 className="text-sm text-muted-foreground group mx-auto px-5 py-2 bg-secondary/50 border border-border rounded-3xl w-fit cursor-default">
               AI Consulting for Modern Startups
               <ChevronRight className="inline w-4 h-4 ml-2 group-hover:translate-x-1 duration-300" />
             </h1>
 
-            <h2 className="text-4xl tracking-tight font-bold mx-auto md:text-6xl lg:text-7xl text-foreground">
+            <h2 className="text-4xl tracking-tight font-bold mx-auto md:text-6xl lg:text-7xl text-foreground leading-tight">
               Scale your business with{' '}
               <span className="text-gradient">AI-powered solutions</span>
             </h2>
@@ -64,9 +61,14 @@ export function HeroSection() {
             </p>
 
             <div className="items-center justify-center gap-4 flex flex-col sm:flex-row pt-4">
-              <NeonButton variant="solid" size="lg">
-                Book a Free Consultation
-              </NeonButton>
+              <span className="relative inline-block overflow-hidden rounded-full p-[1.5px]">
+                <span className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,hsl(270,70%,80%)_0%,hsl(270,70%,40%)_50%,hsl(270,70%,80%)_100%)]" />
+                <div className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-background text-sm font-medium backdrop-blur-3xl">
+                  <a href="#contact" className="inline-flex rounded-full text-center items-center w-full justify-center bg-primary/20 hover:bg-primary/30 text-foreground border border-primary/20 transition-all py-3 px-10">
+                    Book a Free Consultation
+                  </a>
+                </div>
+              </span>
               <NeonButton variant="default" size="lg">
                 View Case Studies
               </NeonButton>
