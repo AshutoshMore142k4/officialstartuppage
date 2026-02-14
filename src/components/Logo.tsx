@@ -5,9 +5,10 @@ export function Logo({ className, size = 'default' }: { className?: string; size
   return (
     <svg
       viewBox="0 0 100 100"
+      style={{ filter: 'drop-shadow(0 0 0px transparent)' }}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={cn(sizeClass, className)}
+      className={cn(sizeClass, 'transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_8px_hsl(260,50%,58%,0.5)]', className)}
     >
       <rect rx="22" width="100" height="100" fill="hsl(260, 50%, 58%)" />
       <path
