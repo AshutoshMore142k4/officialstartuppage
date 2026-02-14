@@ -1,5 +1,4 @@
 import { Brain, Zap, Shield, BarChart3, Workflow, Headphones } from 'lucide-react';
-import { GlareCard } from '@/components/ui/glare-card';
 
 const features = [
   { icon: Brain, title: 'AI Strategy Consulting', description: 'We identify the highest-impact AI opportunities for your business and create a clear roadmap to implementation.' },
@@ -15,7 +14,7 @@ export function Features() {
     <section id="features" className="py-24 relative">
       <div className="max-w-6xl mx-auto px-4 md:px-8">
         <div className="text-center mb-16">
-          <p className="text-sm text-primary uppercase tracking-widest mb-3">What We Offer</p>
+          <p className="text-sm text-primary/80 uppercase tracking-[0.15em] mb-3">What We Offer</p>
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
             End-to-end AI consulting
           </h2>
@@ -24,17 +23,18 @@ export function Features() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {features.map((feature) => (
-            <GlareCard key={feature.title} className="h-full">
-              <div className="flex flex-col p-6 h-full bg-card">
-                <div className="mb-4 inline-flex items-center justify-center rounded-lg bg-primary/10 p-3 w-fit">
-                  <feature.icon className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
+            <div
+              key={feature.title}
+              className="group glass-card rounded-2xl p-6 hover:border-primary/20 transition-all duration-500 hover:glow-primary-sm"
+            >
+              <div className="mb-4 inline-flex items-center justify-center rounded-xl glass-subtle p-3">
+                <feature.icon className="h-5 w-5 text-primary/80" />
               </div>
-            </GlareCard>
+              <h3 className="text-base font-semibold text-foreground mb-2">{feature.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
+            </div>
           ))}
         </div>
       </div>
