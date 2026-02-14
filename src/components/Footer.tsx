@@ -1,4 +1,4 @@
-import logoImg from '@/assets/logo.png';
+import { Logo } from '@/components/Logo';
 
 const footerLinks = {
   Services: ['AI Strategy', 'Prototyping', 'Automation', 'Analytics'],
@@ -13,7 +13,7 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-10">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src={logoImg} alt="11startups.tech" className="h-6 w-6" />
+              <Logo size="sm" />
               <span className="text-lg font-bold text-foreground">11startups<span className="text-primary">.tech</span></span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
