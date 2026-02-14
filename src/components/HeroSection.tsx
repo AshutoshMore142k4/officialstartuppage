@@ -1,5 +1,4 @@
 import React from 'react';
-import { cn } from '@/lib/utils';
 import { ChevronRight } from 'lucide-react';
 import { NeonButton } from '@/components/ui/neon-button';
 import { EtheralShadow } from '@/components/ui/etheral-shadow';
@@ -29,24 +28,22 @@ const RetroGrid = ({
 export function HeroSection() {
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* Ethereal Shadow Background */}
       <div className="absolute inset-0 z-0">
         <EtheralShadow
-          color="hsl(270, 50%, 20%)"
+          color="hsl(260, 30%, 15%)"
           animation={{ scale: 80, speed: 60 }}
-          noise={{ opacity: 0.5, scale: 1 }}
+          noise={{ opacity: 0.4, scale: 1 }}
           sizing="fill"
         />
       </div>
 
-      {/* Radial gradient overlay */}
-      <div className="absolute top-0 z-[1] h-full w-full bg-[radial-gradient(ellipse_40%_60%_at_50%_-10%,hsl(270_70%_40%_/_0.25),transparent)]" />
+      <div className="absolute top-0 z-[1] h-full w-full bg-[radial-gradient(ellipse_50%_50%_at_50%_0%,hsl(260_40%_30%_/_0.15),transparent)]" />
 
       <section className="relative z-[2] max-w-full mx-auto">
-        <RetroGrid angle={65} opacity={0.2} cellSize={50} darkLineColor="hsl(270, 70%, 65%, 0.12)" />
+        <RetroGrid angle={65} opacity={0.15} cellSize={50} darkLineColor="hsl(260, 40%, 50%, 0.08)" />
         <div className="max-w-screen-xl z-10 mx-auto px-4 py-28 md:py-40 gap-12 md:px-8">
           <div className="space-y-6 max-w-3xl leading-0 lg:leading-5 mx-auto text-center">
-            <h1 className="text-sm text-muted-foreground group mx-auto px-5 py-2 bg-secondary/50 border border-border rounded-3xl w-fit cursor-default">
+            <h1 className="text-sm text-muted-foreground group mx-auto px-5 py-2 glass-subtle rounded-full w-fit cursor-default">
               AI Consulting for Modern Startups
               <ChevronRight className="inline w-4 h-4 ml-2 group-hover:translate-x-1 duration-300" />
             </h1>
@@ -61,14 +58,9 @@ export function HeroSection() {
             </p>
 
             <div className="items-center justify-center gap-4 flex flex-col sm:flex-row pt-4">
-              <span className="relative inline-block overflow-hidden rounded-full p-[1.5px]">
-                <span className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,hsl(270,70%,80%)_0%,hsl(270,70%,40%)_50%,hsl(270,70%,80%)_100%)]" />
-                <div className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-background text-sm font-medium backdrop-blur-3xl">
-                  <a href="#contact" className="inline-flex rounded-full text-center items-center w-full justify-center bg-primary/20 hover:bg-primary/30 text-foreground border border-primary/20 transition-all py-3 px-10">
-                    Book a Free Consultation
-                  </a>
-                </div>
-              </span>
+              <NeonButton variant="solid" size="lg">
+                Book a Free Consultation
+              </NeonButton>
               <NeonButton variant="default" size="lg">
                 View Case Studies
               </NeonButton>
