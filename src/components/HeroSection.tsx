@@ -50,7 +50,7 @@ export function HeroSection() {
 
             <h2 className="text-4xl tracking-tight font-bold mx-auto md:text-6xl lg:text-7xl text-foreground leading-tight">
               Scale your business with{' '}
-              <span className="text-gradient">AI-powered solutions</span>
+              <span className="text-foreground">AI-powered solutions</span>
             </h2>
 
             <p className="max-w-2xl mx-auto text-muted-foreground text-lg">
