@@ -2,7 +2,7 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 import { MenuToggle } from '@/components/ui/menu-toggle';
 import { NeonButton } from '@/components/ui/neon-button';
-import { Brain } from 'lucide-react';
+import logoImg from '@/assets/logo.png';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
 
 export function Navbar() {
@@ -30,7 +30,7 @@ export function Navbar() {
     )}>
       <nav className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 md:px-8">
         <a href="#" className="flex items-center gap-2">
-          <Brain className="h-7 w-7 text-primary" />
+          <img src={logoImg} alt="11startups.tech" className="h-7 w-7" />
           <span className="text-lg font-bold tracking-tight text-foreground">
             11startups<span className="text-primary">.tech</span>
           </span>
@@ -61,7 +61,7 @@ export function Navbar() {
           <SheetContent side="right" className="glass-strong w-80 border-l border-border/30 p-0">
             <div className="flex flex-col h-full pt-12 px-6">
               <div className="flex items-center gap-2 mb-8">
-                <Brain className="h-6 w-6 text-primary" />
+                <img src={logoImg} alt="11startups.tech" className="h-6 w-6" />
                 <span className="text-lg font-bold text-foreground">
                   11startups<span className="text-primary">.tech</span>
                 </span>
