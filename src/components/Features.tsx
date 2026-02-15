@@ -1,4 +1,5 @@
 import { Brain, Zap, Shield, BarChart3, Workflow, Headphones } from 'lucide-react';
+import { GlowCard } from '@/components/ui/spotlight-card';
 
 const features = [
   { icon: Brain, title: 'AI Strategy Consulting', description: 'We identify the highest-impact AI opportunities for your business and create a clear roadmap to implementation.' },
@@ -25,16 +26,20 @@ export function Features() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {features.map((feature) => (
-            <div
+            <GlowCard
               key={feature.title}
-              className="group glass-card rounded-2xl p-6 hover:border-primary/20 transition-all duration-500 hover:glow-primary-sm"
+              glowColor="purple"
+              customSize
+              className="!aspect-auto"
             >
-              <div className="mb-4 inline-flex items-center justify-center rounded-xl glass-subtle p-3">
-                <feature.icon className="h-5 w-5 text-primary/80" />
+              <div className="relative z-10 flex flex-col h-full">
+                <div className="mb-4 inline-flex items-center justify-center rounded-xl bg-foreground/5 p-3 w-fit">
+                  <feature.icon className="h-5 w-5 text-primary/80" />
+                </div>
+                <h3 className="text-base font-semibold text-foreground mb-2">{feature.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
               </div>
-              <h3 className="text-base font-semibold text-foreground mb-2">{feature.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
-            </div>
+            </GlowCard>
           ))}
         </div>
       </div>
