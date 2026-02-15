@@ -1,18 +1,4 @@
-import { Suspense, lazy } from 'react';
 import { Brain, Zap, Shield, BarChart3, Workflow, Headphones } from 'lucide-react';
-import { Canvas } from '@react-three/fiber';
-import { MeshGradient } from '@paper-design/shaders-react';
-
-const ShaderPlane = lazy(() =>
-  import('@/components/ui/background-paper-shaders').then((m) => ({
-    default: m.ShaderPlane,
-  }))
-);
-const EnergyRing = lazy(() =>
-  import('@/components/ui/background-paper-shaders').then((m) => ({
-    default: m.EnergyRing,
-  }))
-);
 
 const features = [
   { icon: Brain, title: 'AI Strategy Consulting', description: 'We identify the highest-impact AI opportunities for your business and create a clear roadmap to implementation.' },
@@ -25,30 +11,8 @@ const features = [
 
 export function Features() {
   return (
-    <section id="features" className="py-24 relative overflow-hidden">
-      {/* Shader Background */}
-      <div className="absolute inset-0 z-0">
-        <MeshGradient
-          colors={['#1a0d2e', '#2d1a5e', '#0d0d14', '#1f0a3a']}
-          speed={0.15}
-          style={{ width: '100%', height: '100%' }}
-        />
-        <div className="absolute inset-0 bg-background/70" />
-      </div>
-
-      {/* 3D Shader Overlay */}
-      <div className="absolute inset-0 z-[1] pointer-events-none opacity-30">
-        <Canvas camera={{ position: [0, 0, 5] }}>
-          <Suspense fallback={null}>
-            <ShaderPlane position={[-2, 1, 0]} color1="#7c5cbf" color2="#4a2d8a" />
-            <ShaderPlane position={[2, -1, 0]} color1="#5b3a9e" color2="#2d1a5e" />
-            <EnergyRing radius={1.5} position={[0, 0, -1]} />
-            <EnergyRing radius={2.5} position={[1, 1, -2]} />
-          </Suspense>
-        </Canvas>
-      </div>
-
-      <div className="max-w-6xl mx-auto px-4 md:px-8 relative z-[2]">
+    <section id="features" className="py-24 relative">
+      <div className="max-w-6xl mx-auto px-4 md:px-8">
         <div className="text-center mb-16">
           <p className="text-sm text-primary/80 uppercase tracking-[0.15em] mb-3">What We Offer</p>
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
