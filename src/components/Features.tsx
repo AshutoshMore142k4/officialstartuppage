@@ -1,4 +1,5 @@
 import { Brain, Zap, Shield, BarChart3, Workflow, Headphones } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const features = [
   { icon: Brain, title: 'AI Strategy Consulting', description: 'We identify the highest-impact AI opportunities for your business and create a clear roadmap to implementation.' },
@@ -24,9 +25,12 @@ export function Features() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {features.map((feature) => (
-            <div
+          {features.map((feature, index) => (
+            <motion.div
               key={feature.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.4 }}
               className="group glass-card rounded-2xl p-6 relative overflow-hidden hover:border-primary/20 transition-all duration-500"
             >
               {/* Top neon glow line */}
@@ -39,7 +43,7 @@ export function Features() {
               </div>
               <h3 className="text-base font-semibold text-foreground mb-2">{feature.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
