@@ -1,5 +1,4 @@
 import { Brain, Zap, Shield, BarChart3, Workflow, Headphones } from 'lucide-react';
-import { GlowCard } from '@/components/ui/spotlight-card';
 
 const features = [
   { icon: Brain, title: 'AI Strategy Consulting', description: 'We identify the highest-impact AI opportunities for your business and create a clear roadmap to implementation.' },
@@ -26,20 +25,21 @@ export function Features() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {features.map((feature) => (
-            <GlowCard
+            <div
               key={feature.title}
-              glowColor="purple"
-              customSize
-              className="!aspect-auto"
+              className="group glass-card rounded-2xl p-6 relative overflow-hidden hover:border-primary/20 transition-all duration-500"
             >
-              <div className="relative z-10 flex flex-col h-full">
-                <div className="mb-4 inline-flex items-center justify-center rounded-xl bg-foreground/5 p-3 w-fit">
-                  <feature.icon className="h-5 w-5 text-primary/80" />
-                </div>
-                <h3 className="text-base font-semibold text-foreground mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
+              {/* Top neon glow line */}
+              <span className="absolute h-px opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out inset-x-0 top-0 bg-gradient-to-r w-3/4 mx-auto from-transparent via-primary to-transparent" />
+              {/* Bottom neon glow line */}
+              <span className="absolute h-px opacity-0 group-hover:opacity-30 transition-all duration-500 ease-in-out inset-x-0 bottom-0 bg-gradient-to-r w-3/4 mx-auto from-transparent via-primary to-transparent" />
+
+              <div className="mb-4 inline-flex items-center justify-center rounded-xl glass-subtle p-3">
+                <feature.icon className="h-5 w-5 text-primary/80" />
               </div>
-            </GlowCard>
+              <h3 className="text-base font-semibold text-foreground mb-2">{feature.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
+            </div>
           ))}
         </div>
       </div>
