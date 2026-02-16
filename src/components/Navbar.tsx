@@ -81,7 +81,7 @@ export function Navbar() {
               </div>
 
               <div className="flex flex-col gap-3 mt-auto pb-8">
-                <NeonButton variant="ghost" className="w-full">Sign In</NeonButton>
+               
                 <NeonButton variant="solid" className="w-full">Get Started</NeonButton>
               </div>
             </div>
