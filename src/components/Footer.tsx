@@ -1,16 +1,36 @@
 import { Logo } from '@/components/Logo';
+import { Link } from 'react-router-dom';
 
 const footerLinks = {
-  Services: ['AI Strategy', 'Prototyping', 'Automation', 'Analytics'],
-  Company: ['About', 'Careers', 'Blog', 'Contact'],
-  Legal: ['Privacy Policy', 'Terms of Service', 'Cookie Policy'],
+  Services: [
+    { label: 'All Services', href: '/services' },
+    { label: 'AI Strategy', href: '/services' },
+    { label: 'Prototyping', href: '/services' },
+    { label: 'Automation', href: '/services' },
+  ],
+  Company: [
+    { label: 'About', href: '#' },
+    { label: 'Features', href: '/features' },
+    { label: 'Blog', href: '#' },
+    { label: 'Contact', href: '#' },
+  ],
+  Legal: [
+    { label: 'Privacy Policy', href: '/privacy-policy' },
+    { label: 'Terms of Service', href: '#' },
+    { label: 'Cookie Policy', href: '#' },
+  ],
+  Support: [
+    { label: 'Help Center', href: '/support' },
+    { label: 'Contact Support', href: '/support' },
+    { label: 'FAQ', href: '/support' },
+  ],
 };
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/30 py-16">
+    <footer aria-label="Site footer" className="border-t border-border/30 py-16">
       <div className="max-w-6xl mx-auto px-4 md:px-8">
-        <div className="grid md:grid-cols-4 gap-10">
+        <div className="grid md:grid-cols-5 gap-10">
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Logo size="sm" />
@@ -24,11 +44,17 @@ export function Footer() {
             <div key={category}>
               <h4 className="font-semibold text-foreground mb-4 text-sm">{category}</h4>
               <ul className="space-y-2.5">
-                {links.map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                      {link}
-                    </a>
+                {links.map((item) => (
+                  <li key={item.label}>
+                    {item.href.startsWith('/') ? (
+                      <Link to={item.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <a href={item.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                        {item.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

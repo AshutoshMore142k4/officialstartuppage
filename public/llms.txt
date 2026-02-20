@@ -1,0 +1,60 @@
+# 11startups.tech
+
+> AI consulting that delivers real results. From strategy to production-ready solutions.
+
+## About
+
+11startups.tech is an AI consulting company helping startups and enterprises integrate cutting-edge artificial intelligence into their workflows. We offer end-to-end services — from strategy and prototyping to deployment, compliance, and ongoing support — with measurable ROI.
+
+## Services
+
+- **AI Strategy Consulting**: Audit operations, identify high-impact AI use cases, and build a prioritised implementation roadmap.
+- **Rapid Prototyping**: Go from concept to working AI prototype in 2–4 weeks. Validate ideas fast with minimal investment.
+- **Workflow Automation**: Deploy intelligent AI agents that learn your processes and handle repetitive tasks like document processing and customer routing.
+- **Data Analytics & Insights**: Advanced ML pipelines and dashboards that surface hidden patterns for data-driven decision-making.
+- **AI Safety & Compliance**: Governance frameworks, bias auditing, and regulatory compliance (EU AI Act, etc.) for enterprise AI deployment.
+- **Ongoing Support & Optimisation**: Dedicated AI engineers monitor, fine-tune, and scale solutions post-launch.
+
+## Features
+
+### Core Capabilities
+- AI Strategy Consulting
+- Rapid Prototyping (2–4 week turnaround)
+- Workflow Automation with intelligent agents
+- Data Analytics & ML-powered insights
+- AI Safety & Compliance auditing
+- Ongoing support with dedicated engineers
+
+### Platform Capabilities
+- Multi-Cloud Deployment (AWS, Azure, GCP)
+- Modular Architecture — plug-and-play AI modules
+- Enterprise-Grade Security (end-to-end encryption, SOC 2)
+- Real-Time Monitoring (accuracy, latency, drift)
+- Custom AI Agents (support bots, data extractors)
+- Continuous Learning (automatic model retraining)
+
+## Pricing
+
+- **Starter** ($499/month): AI readiness assessment, 1 consultation/month, email support, basic workflow analysis, implementation roadmap.
+- **Business** ($1,499/month): Everything in Starter plus 4 consultations/month, custom AI model prototyping, priority support, dedicated AI engineer, monthly performance reports.
+- **Enterprise** ($3,999/month): Everything in Business plus unlimited consultations, on-site workshops, AI safety & compliance audit, custom model training, 24/7 dedicated support.
+
+## Process
+
+1. **Discovery**: Deep-dive into business, data, and goals to pinpoint highest-value AI opportunities.
+2. **Design**: Architect a tailored solution — models, data pipelines, and integration points.
+3. **Build**: Develop, test, and iterate with weekly demos and feedback cycles.
+4. **Deploy & Scale**: Launch to production with monitoring, support, and scaling plans.
+
+## Pages
+
+- [Home](https://11startups.tech/)
+- [Services](https://11startups.tech/services)
+- [Features](https://11startups.tech/features)
+- [Privacy Policy](https://11startups.tech/privacy-policy)
+- [Support](https://11startups.tech/support)
+
+## Contact
+
+- Email: support@11startups.tech
+- Privacy inquiries: privacy@11startups.tech

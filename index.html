@@ -3,22 +3,183 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/logo-s.png" />
+    <link rel="apple-touch-icon" href="/logo-s.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>11startups.tech - AI Consulting</title>
-    <meta name="description" content="AI Consulting - Expert AI strategy, prototyping, automation, and analytics services">
-    <meta name="author" content="11startups.tech" />
-    
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="/logo-s.png">
+    <meta name="theme-color" content="#7c3aed" />
 
+    <!-- Primary SEO -->
+    <title>11startups.tech — AI Consulting for Startups & Enterprises</title>
+    <meta name="description" content="11startups.tech delivers end-to-end AI consulting — strategy, rapid prototyping, workflow automation, data analytics, compliance, and ongoing support. Measurable ROI from day one." />
+    <meta name="keywords" content="AI consulting, artificial intelligence, machine learning, AI strategy, rapid prototyping, workflow automation, data analytics, AI compliance, startup AI, enterprise AI, 11startups" />
+    <meta name="author" content="11startups.tech" />
+    <link rel="canonical" href="https://11startups.tech/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="11startups.tech" />
+    <meta property="og:url" content="https://11startups.tech/" />
+    <meta property="og:title" content="11startups.tech — AI Consulting for Startups & Enterprises" />
+    <meta property="og:description" content="End-to-end AI consulting — strategy, prototyping, automation, analytics, and compliance. Measurable ROI from day one." />
+    <meta property="og:image" content="https://11startups.tech/logo-s.png" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@11startups" />
-    <meta name="twitter:image" content="/logo-s.png">
-    <meta property="og:title" content="11startups">
-  <meta name="twitter:title" content="11startups">
-  <meta property="og:description" content="AI Consulting">
-  <meta name="twitter:description" content="AI Consulting">
-</head>
+    <meta name="twitter:title" content="11startups.tech — AI Consulting for Startups & Enterprises" />
+    <meta name="twitter:description" content="End-to-end AI consulting — strategy, prototyping, automation, analytics, and compliance. Measurable ROI from day one." />
+    <meta name="twitter:image" content="https://11startups.tech/logo-s.png" />
+
+    <!-- LLM Discoverability -->
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM summary" />
+    <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM full context" />
+
+    <!-- Structured Data: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "11startups.tech",
+      "url": "https://11startups.tech",
+      "logo": "https://11startups.tech/logo-s.png",
+      "description": "AI consulting company helping startups and enterprises integrate cutting-edge artificial intelligence into their workflows.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "support@11startups.tech",
+        "contactType": "customer support",
+        "availableLanguage": ["English"]
+      },
+      "sameAs": []
+    }
+    </script>
+
+    <!-- Structured Data: WebSite (enables sitelinks search) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "11startups.tech",
+      "url": "https://11startups.tech",
+      "description": "AI consulting that delivers real results. From strategy to production-ready solutions.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://11startups.tech/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- Structured Data: Service offerings -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "AI Consulting Services",
+      "itemListElement": [
+        {
+          "@type": "Service",
+          "position": 1,
+          "name": "AI Strategy Consulting",
+          "description": "Identify the highest-impact AI opportunities and create a clear roadmap to implementation.",
+          "provider": { "@type": "Organization", "name": "11startups.tech" }
+        },
+        {
+          "@type": "Service",
+          "position": 2,
+          "name": "Rapid Prototyping",
+          "description": "Go from concept to working AI prototype in weeks, not months.",
+          "provider": { "@type": "Organization", "name": "11startups.tech" }
+        },
+        {
+          "@type": "Service",
+          "position": 3,
+          "name": "Workflow Automation",
+          "description": "Automate repetitive tasks with intelligent AI agents that learn and adapt.",
+          "provider": { "@type": "Organization", "name": "11startups.tech" }
+        },
+        {
+          "@type": "Service",
+          "position": 4,
+          "name": "Data Analytics & Insights",
+          "description": "Advanced ML models that unlock hidden patterns and drive smarter decisions.",
+          "provider": { "@type": "Organization", "name": "11startups.tech" }
+        },
+        {
+          "@type": "Service",
+          "position": 5,
+          "name": "AI Safety & Compliance",
+          "description": "Governance frameworks, bias auditing, and regulatory compliance support.",
+          "provider": { "@type": "Organization", "name": "11startups.tech" }
+        },
+        {
+          "@type": "Service",
+          "position": 6,
+          "name": "Ongoing Support & Optimisation",
+          "description": "Dedicated AI engineers to monitor, optimise, and scale your AI solutions.",
+          "provider": { "@type": "Organization", "name": "11startups.tech" }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage (from Support page) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I get started with 11startups.tech?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Simply click 'Get Started' on our homepage or reach out via the contact form. Our team will schedule a free consultation to understand your needs and propose the best AI solution for your business."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What industries do you serve?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We work across a wide range of industries including fintech, healthcare, e-commerce, logistics, SaaS, and more. Our AI solutions are tailored to the unique challenges of each sector."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does a typical project take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Project timelines vary based on complexity. A proof-of-concept or prototype typically takes 2–4 weeks, while a full production implementation can take 2–3 months."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer ongoing support after launch?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! We offer dedicated support and maintenance plans to ensure your AI solutions continue to perform optimally. This includes monitoring, updates, and iterative improvements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is your pricing model?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We offer flexible pricing including project-based, retainer, and subscription plans. Visit our Pricing page or contact us for a custom quote tailored to your requirements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I cancel or change my plan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. You can upgrade, downgrade, or cancel your plan at any time. No hidden fees or long-term lock-ins."
+          }
+        }
+      ]
+    }
+    </script>
+  </head>
 
   <body>
     <div id="root"></div>

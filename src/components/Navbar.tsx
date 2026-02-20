@@ -4,6 +4,7 @@ import { MenuToggle } from '@/components/ui/menu-toggle';
 import { NeonButton } from '@/components/ui/neon-button';
 import { Logo } from '@/components/Logo';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
+import { Link } from 'react-router-dom';
 
 export function Navbar() {
   const [open, setOpen] = React.useState(false);
@@ -17,8 +18,8 @@ export function Navbar() {
   }, []);
 
   const links = [
-    { title: 'Services', href: '#services' },
-    { title: 'Features', href: '#features' },
+    { title: 'Services', href: '/services' },
+    { title: 'Features', href: '/features' },
     { title: 'About', href: '#about' },
     { title: 'Contact', href: '#contact' },
   ];
@@ -28,7 +29,7 @@ export function Navbar() {
       'fixed top-0 z-50 w-full border-b border-transparent transition-all duration-500',
       scrolled && 'glass border-border/30'
     )}>
-      <nav className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 md:px-8">
+      <nav aria-label="Main navigation" className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 md:px-8">
         <a href="#" className="flex items-center gap-2">
           <Logo />
           <span className="text-lg font-bold tracking-tight text-foreground">
@@ -37,19 +38,28 @@ export function Navbar() {
         </a>
 
         <div className="hidden items-center gap-8 md:flex">
-          {links.map((link) => (
-            <a
-              key={link.title}
-              href={link.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {link.title}
-            </a>
-          ))}
+          {links.map((link) =>
+            link.href.startsWith('/') ? (
+              <Link
+                key={link.title}
+                to={link.href}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {link.title}
+              </Link>
+            ) : (
+              <a
+                key={link.title}
+                href={link.href}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {link.title}
+              </a>
+            )
+          )}
         </div>
 
         <div className="hidden items-center gap-3 md:flex">
-          <NeonButton variant="ghost" size="sm">Sign In</NeonButton>
           <NeonButton variant="solid" size="default">Get Started</NeonButton>
         </div>
 
@@ -68,16 +78,27 @@ export function Navbar() {
               </div>
 
               <div className="flex flex-col gap-1">
-                {links.map((link) => (
-                  <a
-                    key={link.title}
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="text-base text-foreground py-3 px-4 rounded-xl hover:bg-foreground/5 transition-colors"
-                  >
-                    {link.title}
-                  </a>
-                ))}
+                {links.map((link) =>
+                  link.href.startsWith('/') ? (
+                    <Link
+                      key={link.title}
+                      to={link.href}
+                      onClick={() => setOpen(false)}
+                      className="text-base text-foreground py-3 px-4 rounded-xl hover:bg-foreground/5 transition-colors"
+                    >
+                      {link.title}
+                    </Link>
+                  ) : (
+                    <a
+                      key={link.title}
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className="text-base text-foreground py-3 px-4 rounded-xl hover:bg-foreground/5 transition-colors"
+                    >
+                      {link.title}
+                    </a>
+                  )
+                )}
               </div>
 
               <div className="flex flex-col gap-3 mt-auto pb-8">

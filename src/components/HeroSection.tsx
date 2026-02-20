@@ -21,8 +21,7 @@ export function HeroSection() {
             </h1>
 
             <h2 className="text-4xl tracking-tight font-bold mx-auto md:text-6xl lg:text-7xl text-foreground leading-tight">
-              Scale your business with AI-powered{' '}
-               solutions
+              Scale your business with AI-powered solutions
             </h2>
 
             <p className="max-w-2xl mx-auto text-muted-foreground text-lg">

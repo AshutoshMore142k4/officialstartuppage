@@ -1,14 +1,48 @@
+# 11startups.tech — Robots Configuration
+
+# Search engine crawlers
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
+# Social media crawlers
 User-agent: Twitterbot
 Allow: /
 
 User-agent: facebookexternalhit
 Allow: /
 
+# LLM / AI crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Cohere-AI
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# All other crawlers
 User-agent: *
 Allow: /
+
+# Sitemap
+Sitemap: https://11startups.tech/sitemap.xml
+
+# LLM context files
+# llms.txt: https://11startups.tech/llms.txt
+# llms-full.txt: https://11startups.tech/llms-full.txt
