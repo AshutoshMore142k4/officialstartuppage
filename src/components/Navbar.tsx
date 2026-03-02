@@ -20,7 +20,7 @@ export function Navbar() {
   const links = [
     { title: 'Services', href: '/services' },
     { title: 'Features', href: '/features' },
-    { title: 'About', href: '#about' },
+    { title: 'About', href: '/about' },
     { title: 'Contact', href: '#contact' },
   ];
 
@@ -30,12 +30,12 @@ export function Navbar() {
       scrolled && 'glass border-border/30'
     )}>
       <nav aria-label="Main navigation" className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 md:px-8">
-        <a href="#" className="flex items-center gap-2">
+        <Link to="/" onClick={() => { if (window.location.pathname === '/') { window.scrollTo({ top: 0, behavior: 'smooth' }); } }} className="flex items-center gap-2">
           <Logo />
           <span className="text-lg font-bold tracking-tight text-foreground">
             11startups<span className="text-primary">.tech</span>
           </span>
-        </a>
+        </Link>
 
         <div className="hidden items-center gap-8 md:flex">
           {links.map((link) =>

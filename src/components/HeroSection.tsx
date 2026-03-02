@@ -4,7 +4,7 @@ import { NeonButton } from '@/components/ui/neon-button';
 
 export function HeroSection() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-background">
+    <div id="hero" className="relative min-h-screen overflow-hidden bg-background">
       {/* Animated purple gradient blobs */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/4 w-[800px] h-[500px] rounded-full bg-[radial-gradient(ellipse_at_center,hsl(260_50%_30%_/_0.4),transparent_70%)] blur-3xl animate-[pulse_8s_ease-in-out_infinite]" />
@@ -13,7 +13,7 @@ export function HeroSection() {
       </div>
 
       <section className="relative z-[2] max-w-full mx-auto">
-        <div className="max-w-screen-xl z-10 mx-auto px-4 py-28 md:py-40 gap-12 md:px-8">
+        <div className="max-w-screen-xl z-10 mx-auto px-4 py-28 md:pt-40 md:pb-20 gap-12 md:px-8">
           <div className="space-y-6 max-w-3xl leading-0 lg:leading-5 mx-auto text-center">
             <h1 className="text-sm text-muted-foreground group mx-auto px-5 py-2 glass-subtle rounded-full w-fit cursor-default">
               AI Consulting for Modern Startups
@@ -29,11 +29,13 @@ export function HeroSection() {
             </p>
 
             <div className="items-center justify-center gap-4 flex flex-col sm:flex-row pt-4">
-              <NeonButton variant="solid" size="lg">
-                Book a Free Consultation
-              </NeonButton>
+              <a href="#contact">
+                <NeonButton variant="solid" size="lg">
+                  Book a Free Consultation
+                </NeonButton>
+              </a>
               <NeonButton variant="default" size="lg">
-                View Case Studies
+                Pricing
               </NeonButton>
               
             </div>

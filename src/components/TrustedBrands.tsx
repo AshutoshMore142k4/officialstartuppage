@@ -20,7 +20,7 @@ const brands = [
 
 export function TrustedBrands() {
   return (
-    <section className="py-16 border-t border-border/30 overflow-hidden">
+    <section className="pt-4 pb-16 border-t border-border/30 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 md:px-8">
         <p className="text-center text-xs text-muted-foreground mb-10 uppercase tracking-[0.2em]">
           Trusted by innovative companies worldwide
