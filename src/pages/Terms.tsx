@@ -45,9 +45,9 @@ const Terms = () => {
           those services.
         </p>
         <p>
-          No content on this Site — including service descriptions, pricing, timelines, or the contact form —
-          constitutes a binding offer to provide services, and no contract for services is formed until a separate
-          written agreement is executed.
+          No content on this Site — including service descriptions, pricing, or timelines — constitutes a binding
+          offer to provide services, and no contract for services is formed until a separate written agreement is
+          executed.
         </p>
       </section>
 
@@ -107,13 +107,14 @@ const Terms = () => {
       </section>
 
       <section>
-        <h2>8. Content you submit</h2>
+        <h2>8. Content you send us</h2>
         <p>
-          If you submit information through the contact or support forms, you confirm that you have the right to
-          share it and that it is accurate to the best of your knowledge. You grant us permission to use that
-          information solely to respond to your enquiry and to provide the services you request. Please do not
-          submit confidential, proprietary, or sensitive personal information through the Site's forms — use a
-          signed non-disclosure agreement for that.
+          The Site has no form — "Email Us" and "Book a Call" simply open your email application or our third-party
+          scheduling provider. If you email us or book a call, you confirm that you have the right to share
+          whatever information you send and that it is accurate to the best of your knowledge, and you grant us
+          permission to use it solely to respond to your enquiry and to provide the services you request. Please
+          do not send confidential, proprietary, or sensitive personal information this way — use a signed
+          non-disclosure agreement for that.
         </p>
         <p>
           How we handle personal data is set out in our <a href="/privacy-policy">Privacy Policy</a>.

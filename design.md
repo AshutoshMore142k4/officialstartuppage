@@ -64,7 +64,7 @@ The `max-w-2xl` inside a `max-w-6xl` container is what creates the asymmetry —
 | **How We Work** | Left header. 4 steps as top-bordered columns — the `border-t` doubles as the process timeline. |
 | **Pricing** | Header left, billing/currency controls pushed **right on the same row** (`justify-between`). Cards in an even 3-col grid — pricing is the one place symmetry is correct, since the tiers are peers. |
 | **FAQ** | Two columns. Heading left and `sticky` on desktop, accordion right. |
-| **Contact** | Two columns already — copy left, form right. |
+| **Contact** | Single left-aligned column (`max-w-2xl`) — no form. Two CTAs only: `Book Free Call` (cal.com) and the `hello@` mailto: link. |
 
 ---
 
@@ -87,7 +87,9 @@ Motion-enabled cards (Features, About values/capabilities, Services) additionall
 
 A card that needs a *static* distinguishing border (Pricing's "Most Popular" tier) uses `ring-1 ring-foreground/30` alongside `glass-card`, never a plain `border-*` utility — `.glass-card` sets its own `border` via a CSS shorthand declared later in the stylesheet than Tailwind's utilities, so a same-specificity `border-foreground` class loses that cascade fight silently. `ring-*` is box-shadow-based and composes cleanly regardless of declaration order.
 
-Single, non-grid cards (the contact form, the AI-cost-transparency note, the About pull-quote, Support's message-sent confirmation) stay single-layer `glass-card rounded-2xl p-6` — no `GlowingEffect`. It is a grid-card signifier, not a blanket "every bordered box" treatment.
+Single, non-grid cards (the AI-cost-transparency note, the About pull-quote) stay single-layer `glass-card rounded-2xl p-6` — no `GlowingEffect`. It is a grid-card signifier, not a blanket "every bordered box" treatment.
+
+There is no site-hosted contact form. `hello@`/`support@` mailto: links and the cal.com booking link are the only two contact paths — no backend, no data collection, nothing to fail silently.
 
 ---
 
