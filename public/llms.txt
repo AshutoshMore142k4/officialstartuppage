@@ -1,10 +1,10 @@
 # 11startups.tech
 
-> AI consulting that delivers real results. From strategy to production-ready solutions.
+> Agentic AI & LLM integration for early-stage teams. From strategy to production-ready solutions.
 
 ## About
 
-11startups.tech is an AI consulting company helping startups and enterprises integrate cutting-edge artificial intelligence into their workflows. We offer end-to-end services — from strategy and prototyping to deployment, compliance, and ongoing support — with measurable ROI.
+11startups.tech is an AI consulting studio specializing in agentic AI and LLM integration for startups and enterprises. We offer end-to-end services — from strategy and prototyping to deployment, compliance, and ongoing support.
 
 ## Services
 
@@ -15,42 +15,35 @@
 - **AI Safety & Compliance**: Governance frameworks, bias auditing, and regulatory compliance (EU AI Act, etc.) for enterprise AI deployment.
 - **Ongoing Support & Optimisation**: Dedicated AI engineers monitor, fine-tune, and scale solutions post-launch.
 
-## Features
+## Platform Capabilities
 
-### Core Capabilities
-- AI Strategy Consulting
-- Rapid Prototyping (2–4 week turnaround)
-- Workflow Automation with intelligent agents
-- Data Analytics & ML-powered insights
-- AI Safety & Compliance auditing
-- Ongoing support with dedicated engineers
-
-### Platform Capabilities
 - Multi-Cloud Deployment (AWS, Azure, GCP)
 - Modular Architecture — plug-and-play AI modules
-- Enterprise-Grade Security (end-to-end encryption, SOC 2)
+- Security-First Architecture (end-to-end encryption, strict access controls, audit logging)
 - Real-Time Monitoring (accuracy, latency, drift)
 - Custom AI Agents (support bots, data extractors)
 - Continuous Learning (automatic model retraining)
 
 ## Pricing
 
-- **Starter** ($499/month): AI readiness assessment, 1 consultation/month, email support, basic workflow analysis, implementation roadmap.
-- **Business** ($1,499/month): Everything in Starter plus 4 consultations/month, custom AI model prototyping, priority support, dedicated AI engineer, monthly performance reports.
-- **Enterprise** ($3,999/month): Everything in Business plus unlimited consultations, on-site workshops, AI safety & compliance audit, custom model training, 24/7 dedicated support.
+Two currencies available (USD, INR incl. 18% GST) and monthly/yearly billing. AI usage (model tokens, inference, compute) is billed directly to the client's own provider accounts, not marked up.
+
+- **Starter** ($599/mo or ₹45,000/mo): AI readiness assessment, 1 consultation/month, email support, basic workflow analysis, implementation roadmap.
+- **Growth** ($1,799/mo or ₹1,35,000/mo, most popular): Everything in Starter plus 4 consultations/month, custom AI model prototyping, priority support, dedicated AI engineer, monthly performance reports.
+- **Scale** ($4,499/mo or ₹3,50,000/mo): Everything in Growth plus unlimited consultations, on-site workshops, AI safety & compliance audit, custom model training, 24/7 dedicated support.
 
 ## Process
 
 1. **Discovery**: Deep-dive into business, data, and goals to pinpoint highest-value AI opportunities.
 2. **Design**: Architect a tailored solution — models, data pipelines, and integration points.
-3. **Build**: Develop, test, and iterate with weekly demos and feedback cycles.
+3. **Build**: Develop, test, and iterate with weekly demos. We aim to ship a working prototype in under 4 weeks.
 4. **Deploy & Scale**: Launch to production with monitoring, support, and scaling plans.
 
 ## Pages
 
 - [Home](https://11startups.tech/)
 - [Services](https://11startups.tech/services)
-- [Features](https://11startups.tech/features)
+- [About](https://11startups.tech/about)
 - [Privacy Policy](https://11startups.tech/privacy-policy)
 - [Support](https://11startups.tech/support)
 
@@ -58,3 +51,4 @@
 
 - Email: support@11startups.tech
 - Privacy inquiries: privacy@11startups.tech
+- Book a call: https://cal.com/ash-28uynq/30min

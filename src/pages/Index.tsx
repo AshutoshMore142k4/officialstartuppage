@@ -1,24 +1,36 @@
-import { Navbar } from '@/components/Navbar';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { SiteHeader } from '@/components/SiteHeader';
 import { HeroSection } from '@/components/HeroSection';
-import { TrustedBrands } from '@/components/TrustedBrands';
 import { Features } from '@/components/Features';
+import { HowWeWork } from '@/components/HowWeWork';
 import PricingSection from '@/components/PricingSection';
+import { FaqSection } from '@/components/FaqSection';
 import { CTASection } from '@/components/CTASection';
 import { Footer } from '@/components/Footer';
 import { SEOHead } from '@/components/SEOHead';
 
 const Index = () => {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) return;
+    const id = hash.slice(1);
+    const timer = setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [hash]);
+
   return (
     <div className="min-h-screen bg-background">
-      <SEOHead
-        canonical="/"
-        description="11startups.tech delivers end-to-end AI consulting — strategy, rapid prototyping, workflow automation, data analytics, compliance, and ongoing support. Measurable ROI from day one."
-      />
-      <Navbar />
+      <SEOHead canonical="/" />
+      <SiteHeader />
       <HeroSection />
-      <TrustedBrands />
       <Features />
+      <HowWeWork />
       <PricingSection />
+      <FaqSection />
       <CTASection />
       <Footer />
     </div>

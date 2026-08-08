@@ -1,47 +1,51 @@
-import React from 'react';
-import { ChevronRight } from 'lucide-react';
-import { NeonButton } from '@/components/ui/neon-button';
+import { Button } from '@/components/ui/button';
+import { PixelCanvas } from '@/components/ui/pixel-canvas';
+import { useIsMobile } from '@/hooks/use-mobile';
+
+const CAL_LINK = 'https://cal.com/ash-28uynq/30min';
+const PRISM_COLORS = ['#00dfd8', '#007cf0', '#7928ca', '#ff0080'];
 
 export function HeroSection() {
+  const isMobile = useIsMobile();
+
   return (
-    <div id="hero" className="relative min-h-screen overflow-hidden bg-background">
-      {/* Animated purple gradient blobs */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/4 w-[800px] h-[500px] rounded-full bg-[radial-gradient(ellipse_at_center,hsl(260_50%_30%_/_0.4),transparent_70%)] blur-3xl animate-[pulse_8s_ease-in-out_infinite]" />
-        <div className="absolute top-1/3 left-1/4 w-[500px] h-[400px] rounded-full bg-[radial-gradient(ellipse_at_center,hsl(280_40%_25%_/_0.3),transparent_70%)] blur-3xl animate-[pulse_10s_ease-in-out_2s_infinite]" />
-        <div className="absolute top-1/3 right-1/4 w-[400px] h-[350px] rounded-full bg-[radial-gradient(ellipse_at_center,hsl(250_45%_28%_/_0.25),transparent_70%)] blur-3xl animate-[pulse_12s_ease-in-out_4s_infinite]" />
-      </div>
-
-      <section className="relative z-[2] max-w-full mx-auto">
-        <div className="max-w-screen-xl z-10 mx-auto px-4 py-28 md:pt-40 md:pb-20 gap-12 md:px-8">
-          <div className="space-y-6 max-w-3xl leading-0 lg:leading-5 mx-auto text-center">
-            <h1 className="text-sm text-muted-foreground group mx-auto px-5 py-2 glass-subtle rounded-full w-fit cursor-default">
-              AI Consulting for Modern Startups
-              <ChevronRight className="inline w-4 h-4 ml-2 group-hover:translate-x-1 duration-300" />
-            </h1>
-
-            <h2 className="text-4xl tracking-tight font-bold mx-auto md:text-6xl lg:text-7xl text-foreground leading-tight">
-              Scale your business with AI-powered solutions
-            </h2>
-
-            <p className="max-w-2xl mx-auto text-muted-foreground text-lg">
-              We help startups and enterprises integrate cutting-edge AI into their workflows — from strategy to deployment, with measurable ROI.
+    <section id="hero" className="relative min-h-[calc(100dvh-4rem)] overflow-hidden border-b border-border">
+      <PixelCanvas
+        colors={PRISM_COLORS}
+        gap={isMobile ? 12 : 7}
+        speed={0.025}
+        variant="glow"
+        className="absolute inset-0"
+        canvasClassName="opacity-[0.55]"
+      >
+        <div className="relative mx-auto flex h-full max-w-6xl flex-col justify-center px-4 py-16 md:px-8">
+          <div className="max-w-xl">
+            <p className="mb-4 text-sm font-medium uppercase tracking-widest text-muted-foreground">
+              Agentic AI &amp; LLM Integration
             </p>
 
-            <div className="items-center justify-center gap-4 flex flex-col sm:flex-row pt-4">
-              <a href="#contact">
-                <NeonButton variant="solid" size="lg">
-                  Book a Free Consultation
-                </NeonButton>
-              </a>
-              <NeonButton variant="default" size="lg">
-                Pricing
-              </NeonButton>
-              
+            <h1 className="text-4xl leading-tight text-foreground md:text-6xl md:leading-[1.05]">
+              Beyond Automation. Building AI-Native Companies.
+            </h1>
+
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+              We help ambitious startups evolve into AI-native businesses by integrating autonomous AI agents,
+              custom LLMs, and intelligent decision-making across products, operations, and customer experiences.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button size="lg" asChild>
+                <a href={CAL_LINK} target="_blank" rel="noopener noreferrer">
+                  Get Started
+                </a>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <a href="#pricing">View pricing</a>
+              </Button>
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </PixelCanvas>
+    </section>
   );
 }

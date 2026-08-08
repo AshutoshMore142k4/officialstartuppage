@@ -2,15 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/logo-s.png" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="alternate icon" href="/logo-s.png" />
     <link rel="apple-touch-icon" href="/logo-s.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#7c3aed" />
+    <meta name="theme-color" content="#ffffff" />
 
     <!-- Primary SEO -->
-    <title>11startups.tech — AI Consulting for Startups & Enterprises</title>
-    <meta name="description" content="11startups.tech delivers end-to-end AI consulting — strategy, rapid prototyping, workflow automation, data analytics, compliance, and ongoing support. Measurable ROI from day one." />
-    <meta name="keywords" content="AI consulting, artificial intelligence, machine learning, AI strategy, rapid prototyping, workflow automation, data analytics, AI compliance, startup AI, enterprise AI, 11startups" />
+    <title>11startups.tech — Agentic AI & LLM Integration</title>
+    <meta name="description" content="11startups.tech specializes in agentic AI and LLM integration — strategy, rapid prototyping, workflow automation, data analytics, compliance, and ongoing support." />
+    <link rel="preload" href="/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin />
+    <meta name="keywords" content="agentic AI, LLM integration, AI consulting, artificial intelligence, machine learning, AI strategy, rapid prototyping, workflow automation, data analytics, AI compliance, startup AI, enterprise AI, 11startups" />
     <meta name="author" content="11startups.tech" />
     <link rel="canonical" href="https://11startups.tech/" />
 
@@ -18,16 +20,19 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="11startups.tech" />
     <meta property="og:url" content="https://11startups.tech/" />
-    <meta property="og:title" content="11startups.tech — AI Consulting for Startups & Enterprises" />
-    <meta property="og:description" content="End-to-end AI consulting — strategy, prototyping, automation, analytics, and compliance. Measurable ROI from day one." />
+    <meta property="og:title" content="11startups.tech — Agentic AI & LLM Integration" />
+    <meta property="og:description" content="11startups.tech specializes in agentic AI and LLM integration — strategy, rapid prototyping, workflow automation, data analytics, compliance, and ongoing support." />
     <meta property="og:image" content="https://11startups.tech/logo-s.png" />
+    <meta property="og:image:width" content="135" />
+    <meta property="og:image:height" content="122" />
+    <meta property="og:image:alt" content="11startups.tech logo" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@11startups" />
-    <meta name="twitter:title" content="11startups.tech — AI Consulting for Startups & Enterprises" />
-    <meta name="twitter:description" content="End-to-end AI consulting — strategy, prototyping, automation, analytics, and compliance. Measurable ROI from day one." />
+    <meta name="twitter:title" content="11startups.tech — Agentic AI & LLM Integration" />
+    <meta name="twitter:description" content="11startups.tech specializes in agentic AI and LLM integration — strategy, rapid prototyping, workflow automation, data analytics, compliance, and ongoing support." />
     <meta name="twitter:image" content="https://11startups.tech/logo-s.png" />
 
     <!-- LLM Discoverability -->
@@ -41,8 +46,8 @@
       "@type": "Organization",
       "name": "11startups.tech",
       "url": "https://11startups.tech",
-      "logo": "https://11startups.tech/logo-s.png",
-      "description": "AI consulting company helping startups and enterprises integrate cutting-edge artificial intelligence into their workflows.",
+      "logo": "https://11startups.tech/logo.svg",
+      "description": "AI consulting studio specializing in agentic AI and LLM integration for startups and enterprises.",
       "contactPoint": {
         "@type": "ContactPoint",
         "email": "support@11startups.tech",
@@ -53,19 +58,14 @@
     }
     </script>
 
-    <!-- Structured Data: WebSite (enables sitelinks search) -->
+    <!-- Structured Data: WebSite -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "11startups.tech",
       "url": "https://11startups.tech",
-      "description": "AI consulting that delivers real results. From strategy to production-ready solutions.",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://11startups.tech/?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
+      "description": "AI consulting that delivers real results. From strategy to production-ready solutions."
     }
     </script>
 
@@ -122,7 +122,7 @@
     }
     </script>
 
-    <!-- Structured Data: FAQPage (from Support page) -->
+    <!-- Structured Data: FAQPage — kept in sync with src/data/faqs.ts, rendered on / and /support -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -133,7 +133,7 @@
           "name": "How do I get started with 11startups.tech?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Simply click 'Get Started' on our homepage or reach out via the contact form. Our team will schedule a free consultation to understand your needs and propose the best AI solution for your business."
+            "text": "Click \"Get Started\" to book a free consultation, or reach out via the contact form. We'll schedule a call to understand your needs and propose the best AI approach for your business."
           }
         },
         {
@@ -149,7 +149,7 @@
           "name": "How long does a typical project take?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Project timelines vary based on complexity. A proof-of-concept or prototype typically takes 2–4 weeks, while a full production implementation can take 2–3 months."
+            "text": "Project timelines vary based on complexity. A proof-of-concept or prototype typically takes 2–4 weeks, while a full production implementation can take 2–3 months. We provide detailed timelines during our initial consultation."
           }
         },
         {
@@ -157,7 +157,7 @@
           "name": "Do you offer ongoing support after launch?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes! We offer dedicated support and maintenance plans to ensure your AI solutions continue to perform optimally. This includes monitoring, updates, and iterative improvements."
+            "text": "Yes — we offer dedicated support and maintenance plans to ensure your AI solutions continue to perform optimally. This includes monitoring, updates, and iterative improvements."
           }
         },
         {
@@ -165,7 +165,7 @@
           "name": "What is your pricing model?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We offer flexible pricing including project-based, retainer, and subscription plans. Visit our Pricing page or contact us for a custom quote tailored to your requirements."
+            "text": "We offer flexible monthly and yearly plans in USD or INR — see the Pricing section for details. AI usage (model tokens, inference, compute) is billed directly to your own provider accounts, not marked up by us."
           }
         },
         {
@@ -173,7 +173,7 @@
           "name": "Can I cancel or change my plan?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Absolutely. You can upgrade, downgrade, or cancel your plan at any time. No hidden fees or long-term lock-ins."
+            "text": "Absolutely. You can upgrade, downgrade, or cancel your plan at any time. We believe in flexibility and transparency — no hidden fees or long-term lock-ins."
           }
         }
       ]
@@ -183,6 +183,9 @@
 
   <body>
     <div id="root"></div>
+    <noscript>
+      <p>11startups.tech specializes in agentic AI and LLM integration. Please enable JavaScript to view this site, or email us at hello@11startups.tech.</p>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

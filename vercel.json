@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/features",
+      "destination": "/services",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",

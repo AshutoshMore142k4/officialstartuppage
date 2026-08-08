@@ -11,7 +11,7 @@ interface SEOHeadProps {
 const SITE_NAME = '11startups.tech';
 const BASE_URL = 'https://11startups.tech';
 const DEFAULT_DESCRIPTION =
-  '11startups.tech delivers end-to-end AI consulting — strategy, rapid prototyping, workflow automation, data analytics, compliance, and ongoing support.';
+  '11startups.tech specializes in agentic AI and LLM integration — strategy, rapid prototyping, workflow automation, data analytics, compliance, and ongoing support.';
 
 export function SEOHead({
   title,
@@ -20,7 +20,7 @@ export function SEOHead({
   ogType = 'website',
   noIndex = false,
 }: SEOHeadProps) {
-  const fullTitle = title ? `${title} — ${SITE_NAME}` : `${SITE_NAME} — AI Consulting for Startups & Enterprises`;
+  const fullTitle = title ? `${title} — ${SITE_NAME}` : `${SITE_NAME} — Agentic AI & LLM Integration`;
   const url = canonical ? `${BASE_URL}${canonical}` : BASE_URL;
 
   return (
@@ -35,10 +35,16 @@ export function SEOHead({
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
       <meta property="og:type" content={ogType} />
+      <meta property="og:image" content={`${BASE_URL}/logo-s.png`} />
+      <meta property="og:image:width" content="135" />
+      <meta property="og:image:height" content="122" />
+      <meta property="og:image:alt" content="11startups.tech logo" />
 
       {/* Twitter */}
+      <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={`${BASE_URL}/logo-s.png`} />
     </Helmet>
   );
 }

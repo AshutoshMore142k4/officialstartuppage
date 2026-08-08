@@ -21,10 +21,13 @@ Allow: /
 User-agent: ChatGPT-User
 Allow: /
 
-User-agent: Claude-Web
+User-agent: ClaudeBot
 Allow: /
 
-User-agent: Anthropic-AI
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
 Allow: /
 
 User-agent: PerplexityBot
@@ -34,6 +37,9 @@ User-agent: Cohere-AI
 Allow: /
 
 User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
 Allow: /
 
 # All other crawlers

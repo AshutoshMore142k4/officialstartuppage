@@ -1,18 +1,13 @@
-import { Navbar } from '@/components/Navbar';
+import { SiteHeader } from '@/components/SiteHeader';
 import { Footer } from '@/components/Footer';
 import { CTASection } from '@/components/CTASection';
 import { SEOHead } from '@/components/SEOHead';
-import { NeonButton } from '@/components/ui/neon-button';
+import { Button } from '@/components/ui/button';
+import { GlowingEffect } from '@/components/ui/glowing-effect';
 import { motion } from 'framer-motion';
-import {
-  Rocket,
-  Target,
-  Users,
-  Lightbulb,
-  TrendingUp,
-  Heart,
-  ArrowRight,
-} from 'lucide-react';
+import { Rocket, Target, Users, Lightbulb, TrendingUp, Heart, ArrowRight } from 'lucide-react';
+
+const CAL_LINK = 'https://cal.com/ash-28uynq/30min';
 
 const values = [
   {
@@ -25,7 +20,7 @@ const values = [
     icon: Target,
     title: 'Outcome-Obsessed',
     description:
-      'Every engagement is measured by business impact — not vanity metrics. If it doesn\'t move the needle, we don\'t build it.',
+      "Every engagement is measured by business impact — not vanity metrics. If it doesn't move the needle, we don't build it.",
   },
   {
     icon: Users,
@@ -36,46 +31,37 @@ const values = [
   {
     icon: TrendingUp,
     title: 'Speed to Value',
-    description:
-      'We ship working prototypes in weeks, not quarters. Rapid iteration means faster learning and quicker ROI.',
+    description: 'We aim to ship a working prototype in under 4 weeks. Rapid iteration means faster learning and quicker ROI.',
   },
   {
     icon: Heart,
     title: 'Responsible AI',
     description:
-      'Ethics and safety aren\'t afterthoughts. We bake fairness, explainability, and compliance into every model we deploy.',
+      "Ethics and safety aren't afterthoughts. We bake fairness, explainability, and compliance into every model we deploy.",
   },
   {
     icon: Rocket,
     title: 'Scalability Built-In',
-    description:
-      'Our solutions are architected for growth from day one —  so your AI scales seamlessly as your business expands.',
+    description: 'Our solutions are architected for growth from day one — so your AI scales seamlessly as your business expands.',
   },
 ];
 
-const stats = [
-  { value: '50+', label: 'Projects Delivered' },
-  { value: '30+', label: 'Happy Clients' },
-  { value: '3x', label: 'Avg. ROI Achieved' },
-  { value: '<4 wks', label: 'Time to First Prototype' },
-];
-
-const team = [
+const capabilities = [
   {
-    name: 'AI Strategy Team',
-    description: 'Former consultants and product leaders who translate business goals into high-impact AI roadmaps.',
+    name: 'Strategy',
+    description: 'Translating business goals into a prioritised, high-impact AI roadmap.',
   },
   {
     name: 'ML Engineering',
-    description: 'Research-grade engineers who build, train, and deploy production-ready models at scale.',
+    description: 'Building, training, and deploying production-ready models.',
   },
   {
     name: 'Data & Analytics',
-    description: 'Data scientists and analysts who turn messy data into clear, actionable insights.',
+    description: 'Turning messy data into clear, actionable insight.',
   },
   {
     name: 'Design & UX',
-    description: 'Designers who ensure every AI-powered feature feels intuitive and delightful to use.',
+    description: 'Making every AI-powered feature feel intuitive to use.',
   },
 ];
 
@@ -93,136 +79,113 @@ const About = () => {
     <div className="min-h-screen bg-background">
       <SEOHead
         title="About"
-        description="Learn about 11startups.tech — our mission, values, and the team helping startups and enterprises harness AI for measurable business impact."
+        description="Learn about 11startups.tech — our mission, values, and approach to helping startups and enterprises harness AI for measurable business impact."
         canonical="/about"
       />
-      <Navbar />
+      <SiteHeader />
 
-      {/* Hero */}
-      <section className="relative pt-28 pb-20 px-4 md:px-8 max-w-6xl mx-auto text-center">
-        <p className="text-sm text-primary/80 uppercase tracking-[0.15em] mb-3">About Us</p>
-        <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-5 leading-tight">
-          We help startups turn <br className="hidden md:block" /> AI into unfair advantages
+      <section className="relative mx-auto max-w-6xl px-4 pb-16 pt-24 md:px-8 md:pb-20 md:pt-28">
+        <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">About Us</p>
+        <h1 className="mb-5 max-w-3xl text-4xl leading-tight text-foreground md:text-6xl">
+          We help startups turn AI into unfair advantages
         </h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-          11startups.tech is an AI consulting studio that partners with ambitious startups and enterprises to design, build, and scale AI solutions that drive real business outcomes.
+        <p className="mb-8 max-w-2xl text-lg text-muted-foreground">
+          11startups.tech is an AI consulting studio that partners with ambitious startups and enterprises to
+          design, build, and scale AI solutions that drive real business outcomes.
         </p>
-        <NeonButton variant="solid" size="lg">
-          Work With Us <ArrowRight className="ml-2 h-4 w-4 inline" />
-        </NeonButton>
+        <Button size="lg" asChild>
+          <a href={CAL_LINK} target="_blank" rel="noopener noreferrer">
+            Work With Us <ArrowRight className="ml-2 inline h-4 w-4" />
+          </a>
+        </Button>
       </section>
 
-      {/* Stats */}
-      <section className="py-16 border-y border-border/30">
-        <div className="max-w-5xl mx-auto px-4 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              className="text-center"
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              custom={i}
-            >
-              <p className="text-4xl md:text-5xl font-bold text-foreground">{stat.value}</p>
-              <p className="text-sm text-muted-foreground mt-2">{stat.label}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Mission */}
-      <section className="py-20 px-4 md:px-8 max-w-5xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={0}
-          >
-            <p className="text-sm text-primary/80 uppercase tracking-[0.15em] mb-3">Our Mission</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-5 leading-tight">
+      <section className="mx-auto max-w-5xl px-4 py-16 md:px-8 md:py-20">
+        <div className="grid items-center gap-12 md:grid-cols-2">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
+            <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">Our Mission</p>
+            <h2 className="mb-5 text-3xl leading-tight text-foreground md:text-4xl">
               Democratising AI for the next generation of startups
             </h2>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              Too many startups struggle to adopt AI because the talent is scarce and the tooling is fragmented. We exist to bridge that gap — providing world-class AI expertise at a fraction of the cost of building in-house.
+            <p className="mb-4 leading-relaxed text-muted-foreground">
+              Too many startups struggle to adopt AI because the talent is scarce and the tooling is fragmented. We
+              exist to bridge that gap — providing AI expertise at a fraction of the cost of building in-house.
             </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Whether you're a seed-stage founder exploring your first ML feature or an enterprise scaling production models, we bring the strategy, engineering, and support you need to move fast with confidence.
+            <p className="leading-relaxed text-muted-foreground">
+              Whether you're a seed-stage founder exploring your first ML feature or an enterprise scaling
+              production models, we bring the strategy, engineering, and support you need to move fast with
+              confidence.
             </p>
           </motion.div>
           <motion.div
-            className="relative rounded-2xl border border-border/40 bg-card/40 p-8 backdrop-blur-sm"
+            className="glass-card rounded-2xl p-8"
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             custom={1}
           >
-            <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-primary/10 via-transparent to-primary/5 pointer-events-none" />
-            <blockquote className="relative text-lg text-foreground italic leading-relaxed">
-              "Our goal is simple: help every ambitious company unlock the power of AI — with speed, safety, and measurable results."
+            <blockquote className="text-lg italic leading-relaxed text-foreground">
+              "Our goal is simple: help every ambitious company unlock the power of AI — with speed, safety, and
+              measurable results."
             </blockquote>
-            <p className="relative mt-4 text-sm text-muted-foreground">— The 11startups team</p>
+            <p className="mt-4 text-sm text-muted-foreground">— The 11startups team</p>
           </motion.div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="py-20 px-4 md:px-8 max-w-6xl mx-auto">
-        <div className="text-center mb-14">
-          <p className="text-sm text-primary/80 uppercase tracking-[0.15em] mb-3">Our Values</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
+      <section className="mx-auto max-w-6xl px-4 py-16 md:px-8 md:py-20">
+        <div className="mb-14 max-w-2xl">
+          <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">Our Values</p>
+          <h2 className="text-3xl leading-tight text-foreground md:text-4xl">
             The principles that guide everything we build
           </h2>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {values.map((value, i) => (
             <motion.div
               key={value.title}
-              className="group relative rounded-2xl border border-border/40 bg-card/30 p-7 backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:bg-card/60"
+              className="glass-card relative rounded-2xl p-7"
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               custom={i}
             >
-              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary/20">
+              <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} />
+              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-md bg-secondary text-foreground">
                 <value.icon className="h-5 w-5" />
               </div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">{value.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
+              <h3 className="mb-2 text-lg font-semibold text-foreground">{value.title}</h3>
+              <p className="text-sm leading-relaxed text-muted-foreground">{value.description}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* Team */}
-      <section className="py-20 px-4 md:px-8 max-w-5xl mx-auto">
-        <div className="text-center mb-14">
-          <p className="text-sm text-primary/80 uppercase tracking-[0.15em] mb-3">Our Team</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
-            A cross-functional crew built for velocity
-          </h2>
-          <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
-            We're a lean, senior team of AI engineers, strategists, data scientists, and designers who've shipped ML products at startups and Fortune 500s alike.
+      <section className="mx-auto max-w-5xl px-4 py-16 md:px-8 md:py-20">
+        <div className="mb-14 max-w-2xl">
+          <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">How We're Built</p>
+          <h2 className="text-3xl leading-tight text-foreground md:text-4xl">A small, senior team</h2>
+          <p className="mt-4 text-muted-foreground">
+            We're a lean, senior team of AI engineers, strategists, data scientists, and designers who've shipped
+            ML products before. No layers, no handoffs — you work directly with the people building your solution.
           </p>
         </div>
-        <div className="grid sm:grid-cols-2 gap-6">
-          {team.map((t, i) => (
+        <div className="grid gap-6 sm:grid-cols-2">
+          {capabilities.map((c, i) => (
             <motion.div
-              key={t.name}
-              className="rounded-2xl border border-border/40 bg-card/30 p-7 backdrop-blur-sm"
+              key={c.name}
+              className="glass-card relative rounded-2xl p-7"
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               custom={i}
             >
-              <h3 className="text-lg font-semibold text-foreground mb-2">{t.name}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{t.description}</p>
+              <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} />
+              <h3 className="mb-2 text-lg font-semibold text-foreground">{c.name}</h3>
+              <p className="text-sm leading-relaxed text-muted-foreground">{c.description}</p>
             </motion.div>
           ))}
         </div>

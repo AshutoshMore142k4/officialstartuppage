@@ -5,15 +5,14 @@
 ## Company Overview
 
 **Name**: 11startups.tech
-**Type**: AI Consulting Company
-**Founded**: 2026
+**Type**: AI Consulting Studio
 **Website**: https://11startups.tech
 **Contact Email**: support@11startups.tech
 **Privacy Email**: privacy@11startups.tech
 
-**Mission**: Help startups and enterprises integrate cutting-edge AI into their workflows — from strategy to deployment, with measurable ROI.
+**Mission**: Help startups and enterprises ship agentic AI systems and integrate LLMs into their workflows — from strategy to deployment.
 
-**Tagline**: AI consulting that delivers real results. From strategy to production-ready solutions.
+**Tagline**: Agentic AI & LLM integration for early-stage teams. From strategy to production-ready solutions.
 
 ---
 
@@ -46,18 +45,22 @@
 
 ### 6. Ongoing Support & Optimisation
 - **What**: Dedicated AI engineers monitor, fine-tune, and scale solutions post-launch.
-- **Deliverables**: Proactive monitoring & alerting, model retraining & drift detection, performance optimisation sprints, 24/7 enterprise SLA available.
+- **Deliverables**: Proactive monitoring & alerting, model retraining & drift detection, performance optimisation sprints, 24/7 enterprise SLA available on the Scale plan.
 - **Best For**: Companies that need production AI to keep performing.
 
 ---
 
 ## Pricing Plans
 
-| Plan | Monthly | Yearly | Key Inclusions |
-|------|---------|--------|----------------|
-| Starter | $499/mo | $4,499/yr | AI readiness assessment, 1 consultation/month, email support, basic workflow analysis, implementation roadmap |
-| Business (Most Popular) | $1,499/mo | $13,499/yr | Everything in Starter + 4 consultations/month, custom AI model prototyping, priority support, dedicated AI engineer, monthly performance reports |
-| Enterprise | $3,999/mo | $35,999/yr | Everything in Business + unlimited consultations, on-site workshops, AI safety & compliance audit, custom model training, 24/7 dedicated support |
+Prices shown are proposed market-rate figures. Two currencies (USD, INR) and monthly/yearly billing are available; INR is inclusive of 18% GST. AI usage — model API tokens, inference, and compute — is billed directly to the client's own provider accounts and is never marked up.
+
+| Plan | Monthly (USD) | Monthly (INR, incl. GST) | Key Inclusions |
+|------|---------------|---------------------------|-----------------|
+| Starter | $599/mo | ₹45,000/mo | AI readiness assessment, 1 consultation/month, email support, basic workflow analysis, implementation roadmap |
+| Growth (Most Popular) | $1,799/mo | ₹1,35,000/mo | Everything in Starter + 4 consultations/month, custom AI model prototyping, priority support, dedicated AI engineer, monthly performance reports |
+| Scale | $4,499/mo | ₹3,50,000/mo | Everything in Growth + unlimited consultations, on-site workshops, AI safety & compliance audit, custom model training, 24/7 dedicated support |
+
+Yearly billing is 10× the monthly rate (2 months free).
 
 ---
 
@@ -65,7 +68,7 @@
 
 - **Multi-Cloud Deployment**: AWS, Azure, GCP — infrastructure-agnostic, no vendor lock-in.
 - **Modular Architecture**: Plug-and-play AI modules; start small, compose complex solutions.
-- **Enterprise-Grade Security**: End-to-end encryption, SOC 2 controls, role-based access.
+- **Security-First Architecture**: End-to-end encryption, strict access controls, audit logging.
 - **Real-Time Monitoring**: Live dashboards for model accuracy, latency, and drift.
 - **Custom AI Agents**: Autonomous agents for support bots, data extractors, and more.
 - **Continuous Learning**: Automatic model retraining on fresh data.
@@ -76,25 +79,16 @@
 
 1. **Discovery** — Deep-dive into business, data, and goals.
 2. **Design** — Architect tailored solution (models, pipelines, integrations).
-3. **Build** — Develop, test, iterate with weekly demos.
+3. **Build** — Develop, test, iterate with weekly demos. We aim to ship a working prototype in under 4 weeks.
 4. **Deploy & Scale** — Production launch with monitoring and scaling plan.
-
----
-
-## Key Stats
-
-- 50+ Projects Delivered
-- 3× Average ROI
-- 99.9% Uptime SLA
-- < 2 week Prototype Turnaround
 
 ---
 
 ## Sitemap
 
 - **Home**: https://11startups.tech/
-- **Services**: https://11startups.tech/services
-- **Features**: https://11startups.tech/features
+- **Services**: https://11startups.tech/services (includes platform capabilities; `/features` redirects here)
+- **About**: https://11startups.tech/about
 - **Privacy Policy**: https://11startups.tech/privacy-policy
 - **Support / Help Center**: https://11startups.tech/support
 
@@ -103,7 +97,7 @@
 ## Frequently Asked Questions
 
 **Q: How do I get started with 11startups.tech?**
-A: Click "Get Started" on the homepage or reach out via the contact form. The team will schedule a free consultation.
+A: Click "Get Started" to book a free consultation, or reach out via the contact form.
 
 **Q: What industries do you serve?**
 A: Fintech, healthcare, e-commerce, logistics, SaaS, and more. Solutions are tailored per sector.
@@ -115,7 +109,7 @@ A: Proof-of-concept: 2–4 weeks. Full production: 2–3 months. Detailed timeli
 A: Yes — dedicated support & maintenance plans with monitoring, updates, and iterative improvements.
 
 **Q: What is your pricing model?**
-A: Project-based, retainer, and subscription plans available. Custom quotes on request.
+A: Monthly and yearly plans in USD or INR (see Pricing Plans above). AI usage is billed at cost to the client's own provider accounts.
 
 **Q: Can I cancel or change my plan?**
 A: Yes — upgrade, downgrade, or cancel anytime. No hidden fees or long-term lock-ins.
