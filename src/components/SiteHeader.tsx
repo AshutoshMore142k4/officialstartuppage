@@ -114,12 +114,13 @@ export function SiteHeader() {
   }, [open, close]);
 
   return (
-    <header
-      className={cn(
-        'sticky top-0 z-50 w-full transition-colors',
-        scrolled || open ? 'glass border-b border-transparent' : 'border-b border-transparent bg-transparent',
-      )}
-    >
+    <>
+      <header
+        className={cn(
+          'sticky top-0 z-50 w-full transition-colors',
+          scrolled || open ? 'glass border-b border-transparent' : 'border-b border-transparent bg-transparent',
+        )}
+      >
       <nav className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-[max(1rem,env(safe-area-inset-left))] md:px-8">
         <Link to="/" className="-mx-2 flex min-h-11 items-center gap-2 px-2">
           <Logo size="sm" />
@@ -158,15 +159,25 @@ export function SiteHeader() {
             <MenuToggleIcon open={open} className="size-5" duration={300} />
           </Button>
         </div>
-      </nav>
+        </nav>
+      </header>
 
+      {/*
+        This panel MUST stay outside <header>. The header carries `glass`
+        (backdrop-filter) whenever it is scrolled or open, and a non-none
+        backdrop-filter makes an element a containing block for its
+        position:fixed descendants. Nested inside, the panel's `top-16
+        bottom-0` resolved against the 66px header instead of the viewport
+        and collapsed to 2px tall, so tapping the menu button appeared to
+        do nothing.
+      */}
       <div
         id="mobile-menu"
         role="dialog"
         aria-modal="true"
         aria-label="Site menu"
         className={cn(
-          'glass fixed inset-x-0 top-16 bottom-0 z-50 flex-col overflow-y-auto border-t-0 md:hidden',
+          'glass fixed inset-x-0 top-16 bottom-0 z-40 flex-col overflow-y-auto border-t-0 md:hidden',
           open ? 'flex' : 'hidden',
         )}
       >
@@ -193,6 +204,6 @@ export function SiteHeader() {
           </a>
         </div>
       </div>
-    </header>
+    </>
   );
 }

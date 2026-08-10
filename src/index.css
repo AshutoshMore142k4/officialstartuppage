@@ -108,12 +108,18 @@
     @apply border-border;
   }
 
+  /*
+    overflow-x lives on html ONLY. With it on both html and body, viewport
+    propagation is satisfied by html, so body becomes its own scroll
+    container — and `position: sticky` then resolves against body's
+    scrollport, which never scrolls. That silently broke the sticky header.
+  */
   html {
     @apply overflow-x-hidden;
   }
 
   body {
-    @apply bg-background text-foreground antialiased overflow-x-hidden;
+    @apply bg-background text-foreground antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
