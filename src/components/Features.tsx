@@ -18,7 +18,7 @@ export function Features() {
   return (
     <section id="features" className="border-b border-border py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-4 md:px-8">
-        <div className="mb-16 max-w-2xl">
+        <div className="mb-10 max-w-2xl md:mb-16">
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">What We Offer</p>
           <h2 className="text-3xl text-foreground md:text-5xl">End-to-end AI consulting</h2>
           <p className="mt-4 text-lg text-muted-foreground">

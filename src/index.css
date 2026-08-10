@@ -20,6 +20,16 @@
 
 @layer base {
   :root {
+    /*
+      Declaring color-scheme is what opts this site OUT of Chrome for Android's
+      "Auto dark theme for web contents", which force-inverts pages that don't
+      declare one. Without it the light palette rendered dark on phones AND the
+      theme toggle looked broken, because Chrome kept re-inverting whatever the
+      toggle produced. This must stay in static CSS: next-themes only sets
+      style.colorScheme after React mounts, long after Chrome has decided.
+    */
+    color-scheme: light;
+
     --background: 0 0% 100%;
     --foreground: 0 0% 4%;
     --card: 0 0% 100%;
@@ -56,6 +66,8 @@
   }
 
   .dark {
+    color-scheme: dark;
+
     --background: 0 0% 4%;
     --foreground: 0 0% 98%;
     --card: 0 0% 6%;

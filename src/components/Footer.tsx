@@ -36,13 +36,13 @@ export function Footer() {
           {Object.entries(footerLinks).map(([category, items]) => (
             <div key={category}>
               <h4 className="mb-4 text-sm font-medium text-foreground">{category}</h4>
-              <ul className="space-y-2.5">
+              <ul className="space-y-0.5">
                 {items.map((item) => (
                   <li key={item.label}>
                     {item.href.startsWith('/') ? (
                       <Link
                         to={item.href}
-                        className="-my-2.5 inline-block py-2.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                        className="inline-flex min-h-11 items-center text-sm text-muted-foreground transition-colors hover:text-foreground active:text-foreground"
                       >
                         {item.label}
                       </Link>
@@ -51,7 +51,7 @@ export function Footer() {
                         href={item.href}
                         target={item.href.startsWith('http') ? '_blank' : undefined}
                         rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        className="-my-2.5 inline-block py-2.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                        className="inline-flex min-h-11 items-center text-sm text-muted-foreground transition-colors hover:text-foreground active:text-foreground"
                       >
                         {item.label}
                       </a>
@@ -65,13 +65,13 @@ export function Footer() {
         <div className="mt-12 flex flex-col items-center gap-3 border-t border-border pt-8 text-center sm:flex-row sm:justify-between">
           <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} 11startups.tech. All rights reserved.</p>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
-            <Link to="/privacy-policy" className="text-xs text-muted-foreground transition-colors hover:text-foreground">
+            <Link to="/privacy-policy" className="inline-flex min-h-11 items-center text-xs text-muted-foreground transition-colors hover:text-foreground active:text-foreground">
               Privacy Policy
             </Link>
-            <Link to="/terms" className="text-xs text-muted-foreground transition-colors hover:text-foreground">
+            <Link to="/terms" className="inline-flex min-h-11 items-center text-xs text-muted-foreground transition-colors hover:text-foreground active:text-foreground">
               Terms
             </Link>
-            <Link to="/disclaimer" className="text-xs text-muted-foreground transition-colors hover:text-foreground">
+            <Link to="/disclaimer" className="inline-flex min-h-11 items-center text-xs text-muted-foreground transition-colors hover:text-foreground active:text-foreground">
               Disclaimer
             </Link>
           </div>

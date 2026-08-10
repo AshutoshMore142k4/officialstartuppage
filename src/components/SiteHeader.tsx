@@ -25,7 +25,7 @@ function ThemeToggle({ className }: { className?: string }) {
     <Button
       variant="outline"
       size="icon"
-      aria-label="Toggle theme"
+      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       className={className}
     >
@@ -61,16 +61,46 @@ export function SiteHeader() {
   const [open, setOpen] = React.useState(false);
   const scrolled = useScroll(10);
   const menuButtonRef = React.useRef<HTMLButtonElement>(null);
+  const { resolvedTheme } = useTheme();
+  const { pathname } = useLocation();
 
   const close = React.useCallback(() => {
     setOpen(false);
     menuButtonRef.current?.focus();
   }, []);
 
+  // Keep the browser-chrome colour in step with the active theme. The pre-paint
+  // script in index.html sets the initial value; this handles later toggles.
   React.useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : '';
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', resolvedTheme === 'dark' ? '#0a0a0a' : '#ffffff');
+  }, [resolvedTheme]);
+
+  // A back gesture (very common on mobile) changes the route without firing any
+  // link onClick, which would otherwise leave the panel open over the new page
+  // with body scroll still locked.
+  React.useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  // iOS Safari ignores `overflow: hidden` on body for touch scrolling, so the page
+  // behind the panel still rubber-bands. Pinning body with a compensating offset is
+  // the technique that actually holds, and it preserves scroll position on close.
+  React.useEffect(() => {
+    if (!open) return;
+    const scrollY = window.scrollY;
+    const { body } = document;
+    const prev = { position: body.style.position, top: body.style.top, width: body.style.width };
+
+    body.style.position = 'fixed';
+    body.style.top = `-${scrollY}px`;
+    body.style.width = '100%';
+
     return () => {
-      document.body.style.overflow = '';
+      body.style.position = prev.position;
+      body.style.top = prev.top;
+      body.style.width = prev.width;
+      window.scrollTo(0, scrollY);
     };
   }, [open]);
 
@@ -90,8 +120,8 @@ export function SiteHeader() {
         scrolled || open ? 'glass border-b border-transparent' : 'border-b border-transparent bg-transparent',
       )}
     >
-      <nav className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 md:px-8">
-        <Link to="/" className="flex items-center gap-2">
+      <nav className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-[max(1rem,env(safe-area-inset-left))] md:px-8">
+        <Link to="/" className="-mx-2 flex min-h-11 items-center gap-2 px-2">
           <Logo size="sm" />
           <span className="text-base font-semibold tracking-tight text-foreground">11Startups</span>
         </Link>
@@ -120,7 +150,7 @@ export function SiteHeader() {
             ref={menuButtonRef}
             size="icon"
             variant="outline"
-            aria-label="Toggle menu"
+            aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen(!open)}
@@ -132,12 +162,15 @@ export function SiteHeader() {
 
       <div
         id="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Site menu"
         className={cn(
           'glass fixed inset-x-0 top-16 bottom-0 z-50 flex-col overflow-y-auto border-t-0 md:hidden',
           open ? 'flex' : 'hidden',
         )}
       >
-        <div className="flex min-h-full w-full flex-col gap-y-2 p-4">
+        <div className="flex min-h-full w-full flex-col gap-y-2 p-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
           <div className="grid gap-y-1">
             {links.map((link) => (
               <NavItem
@@ -145,7 +178,7 @@ export function SiteHeader() {
                 href={link.href}
                 label={link.label}
                 onClick={close}
-                className={buttonVariants({ variant: 'ghost', className: 'justify-start text-base' })}
+                className={buttonVariants({ variant: 'ghost', className: 'h-12 justify-start text-base' })}
               />
             ))}
           </div>
@@ -153,7 +186,7 @@ export function SiteHeader() {
             href={CAL_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className={buttonVariants({ className: 'mt-auto w-full' })}
+            className={buttonVariants({ size: 'lg', className: 'mt-auto w-full' })}
             onClick={close}
           >
             Get Started

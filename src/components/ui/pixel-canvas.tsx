@@ -101,13 +101,39 @@ export function PixelCanvas({
     const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
+    // Honour the OS "reduce motion" setting: render nothing and never start a loop.
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+
     let cols = 0;
     let rows = 0;
     const pixelSize = Math.max(gap, 4);
 
+    // Cached box. Reading getBoundingClientRect() inside draw() forced a synchronous
+    // layout flush on every frame, forever; the size only actually changes on resize.
+    let boxW = 0;
+    let boxH = 0;
+    let boxLeft = 0;
+    let boxTop = 0;
+
+    // The loop parks itself when there is nothing to animate (no pointer, everything
+    // decayed to black) and while the hero is scrolled out of view, instead of burning
+    // a frame budget behind the rest of the page.
+    let running = false;
+    let onScreen = true;
+
+    const syncBox = () => {
+      const r = container.getBoundingClientRect();
+      boxLeft = r.left;
+      boxTop = r.top;
+    };
+
     const initPixels = () => {
       const rect = container.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
+      boxW = rect.width;
+      boxH = rect.height;
+      boxLeft = rect.left;
+      boxTop = rect.top;
 
       canvas.width = rect.width * dpr;
       canvas.height = rect.height * dpr;
@@ -142,8 +168,7 @@ export function PixelCanvas({
       const deltaTime = timestamp - lastTimeRef.current;
       lastTimeRef.current = timestamp;
 
-      const rect = container.getBoundingClientRect();
-      ctx.clearRect(0, 0, rect.width, rect.height);
+      ctx.clearRect(0, 0, boxW, boxH);
 
       const { x: mouseX, y: mouseY } = mouseRef.current;
       const pixels = pixelsRef.current;
@@ -151,6 +176,10 @@ export function PixelCanvas({
       // Influence radius based on variant
       const radius = variant === "glow" ? 120 : 80;
       const glowPasses = variant === "glow" ? 2 : 1;
+
+      // Tracks whether anything is still lit. When the pointer has left and every
+      // pixel has decayed, there is nothing left to paint and the loop can stop.
+      let anyLit = false;
 
       // Update pixel states
       for (let i = 0; i < cols; i++) {
@@ -191,6 +220,7 @@ export function PixelCanvas({
 
           // Only draw if visible
           if (pixel.intensity > 0.01) {
+            anyLit = true;
             const color = getColorFromIntensity(
               pixel.intensity,
               pixel.colorPhase,
@@ -236,15 +266,25 @@ export function PixelCanvas({
       }
 
       ctx.globalAlpha = 1;
+
+      const pointerActive = mouseRef.current.x > -999;
+      if ((anyLit || pointerActive) && onScreen) {
+        animationRef.current = requestAnimationFrame(draw);
+      } else {
+        running = false;
+      }
+    };
+
+    const start = () => {
+      if (running || !onScreen) return;
+      running = true;
+      lastTimeRef.current = performance.now();
       animationRef.current = requestAnimationFrame(draw);
     };
 
     const onMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      mouseRef.current = {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-      };
+      mouseRef.current = { x: e.clientX - boxLeft, y: e.clientY - boxTop };
+      start();
     };
 
     const onMouseLeave = () => {
@@ -252,43 +292,72 @@ export function PixelCanvas({
     };
 
     const onTouchMove = (e: TouchEvent) => {
-      if (e.touches.length > 0) {
-        const touch = e.touches[0];
-        if (touch) {
-          const rect = canvas.getBoundingClientRect();
-          mouseRef.current = {
-            x: touch.clientX - rect.left,
-            y: touch.clientY - rect.top,
-          };
-        }
-      }
+      const touch = e.touches[0];
+      if (!touch) return;
+      mouseRef.current = { x: touch.clientX - boxLeft, y: touch.clientY - boxTop };
+      start();
     };
 
+    // touchcancel matters as much as touchend: when the browser takes the gesture
+    // over (scroll handoff, edge swipe, incoming call) touchend never fires, and
+    // without this a lit blob would stay frozen under the last touch point.
     const onTouchEnd = () => {
       mouseRef.current = { x: -1000, y: -1000 };
     };
 
+    let resizeTimer: number | undefined;
+    const onResize = () => {
+      window.clearTimeout(resizeTimer);
+      // Mobile URL-bar collapse fires resize repeatedly mid-scroll; rebuilding the
+      // whole grid on each one is what made scrolling the hero janky.
+      resizeTimer = window.setTimeout(() => {
+        initPixels();
+        start();
+      }, 150);
+    };
+
+    // Scrolling moves the box without resizing it, so the cached offsets need refreshing.
+    const onScroll = () => syncBox();
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        onScreen = entry?.isIntersecting ?? true;
+        if (onScreen) {
+          syncBox();
+          start();
+        }
+      },
+      { threshold: 0 },
+    );
+    io.observe(container);
+
     // Initialize
     initPixels();
-    lastTimeRef.current = performance.now();
-    animationRef.current = requestAnimationFrame(draw);
+    start();
 
     // Event listeners
-    window.addEventListener("resize", initPixels);
+    window.addEventListener("resize", onResize);
+    window.addEventListener("scroll", onScroll, { passive: true });
     if (!noFocus) {
       container.addEventListener("mousemove", onMouseMove);
       container.addEventListener("mouseleave", onMouseLeave);
       container.addEventListener("touchmove", onTouchMove, { passive: true });
       container.addEventListener("touchend", onTouchEnd);
+      container.addEventListener("touchcancel", onTouchEnd);
     }
 
     return () => {
       cancelAnimationFrame(animationRef.current);
-      window.removeEventListener("resize", initPixels);
+      running = false;
+      window.clearTimeout(resizeTimer);
+      io.disconnect();
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("scroll", onScroll);
       container.removeEventListener("mousemove", onMouseMove);
       container.removeEventListener("mouseleave", onMouseLeave);
       container.removeEventListener("touchmove", onTouchMove);
       container.removeEventListener("touchend", onTouchEnd);
+      container.removeEventListener("touchcancel", onTouchEnd);
     };
   }, [gap, speed, noFocus, variant, getColorFromIntensity]);
 

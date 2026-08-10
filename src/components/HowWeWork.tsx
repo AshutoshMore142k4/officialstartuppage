@@ -9,7 +9,7 @@ export function HowWeWork() {
   return (
     <section id="how-we-work" className="border-b border-border py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-4 md:px-8">
-        <div className="mb-16 max-w-2xl">
+        <div className="mb-10 max-w-2xl md:mb-16">
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">How We Work</p>
           <h2 className="text-3xl text-foreground md:text-5xl">A proven four-step process</h2>
           <p className="mt-4 text-lg text-muted-foreground">

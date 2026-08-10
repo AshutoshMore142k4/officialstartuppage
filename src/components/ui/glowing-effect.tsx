@@ -94,6 +94,14 @@ const GlowingEffect = memo(
     useEffect(() => {
       if (disabled) return;
 
+      // This is a pointer-position effect, so it delivers nothing on a touch device —
+      // but it would still cost a document.body pointermove listener and a scroll
+      // listener per instance, and pages mount up to 16 of them. Each scroll frame
+      // then triggers one getBoundingClientRect() per instance (forced reflow) and can
+      // start a 2s tween. Skip entirely unless the device actually has a hovering
+      // pointer; `matches` is false for touch, so phones opt out and desktops don't.
+      if (!window.matchMedia?.("(hover: hover) and (pointer: fine)").matches) return;
+
       const handleScroll = () => handleMove();
       const handlePointerMove = (e: PointerEvent) => handleMove(e);
 

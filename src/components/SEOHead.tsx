@@ -35,16 +35,16 @@ export function SEOHead({
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
       <meta property="og:type" content={ogType} />
-      <meta property="og:image" content={`${BASE_URL}/logo-s.png`} />
-      <meta property="og:image:width" content="135" />
-      <meta property="og:image:height" content="122" />
+      <meta property="og:image" content={`${BASE_URL}/favicon.png`} />
+      <meta property="og:image:width" content="180" />
+      <meta property="og:image:height" content="180" />
       <meta property="og:image:alt" content="11startups.tech logo" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={`${BASE_URL}/logo-s.png`} />
+      <meta name="twitter:image" content={`${BASE_URL}/favicon.png`} />
     </Helmet>
   );
 }

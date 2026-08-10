@@ -17,16 +17,16 @@ const Support = () => {
         canonical="/support"
       />
       <SiteHeader />
-      <main className="mx-auto max-w-5xl px-4 pb-16 pt-24 md:px-8 md:pb-20 md:pt-28">
-        <div className="mb-16 max-w-2xl">
-          <h1 className="mb-4 text-4xl text-foreground md:text-5xl">Support Center</h1>
+      <main className="mx-auto max-w-5xl px-4 pb-16 pt-20 md:px-8 md:pb-20 md:pt-28">
+        <div className="mb-10 max-w-2xl md:mb-16">
+          <h1 className="mb-4 text-3xl text-foreground sm:text-4xl md:text-5xl">Support Center</h1>
           <p className="text-lg text-muted-foreground">
             We're here to help. Browse our FAQs or reach out directly — our team typically responds within 24
             hours.
           </p>
         </div>
 
-        <div className="mb-20 grid gap-6 sm:grid-cols-2">
+        <div className="mb-12 grid gap-6 sm:grid-cols-2 md:mb-20">
           <a href="mailto:support@11startups.tech" className="glass-card relative block rounded-2xl p-6">
             <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} />
             <Mail className="mb-4 h-6 w-6 text-muted-foreground" />

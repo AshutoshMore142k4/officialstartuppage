@@ -153,9 +153,9 @@ const Services = () => {
         canonical="/services"
       />
       <SiteHeader />
-      <section className="relative mx-auto max-w-6xl px-4 pb-16 pt-24 md:px-8 md:pb-20 md:pt-28">
+      <section className="relative mx-auto max-w-6xl px-4 pb-16 pt-20 md:px-8 md:pb-20 md:pt-28">
         <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">Our Services</p>
-        <h1 className="mb-5 max-w-3xl text-4xl leading-tight text-foreground md:text-6xl">
+        <h1 className="mb-5 max-w-3xl text-3xl leading-tight text-foreground sm:text-4xl md:text-6xl">
           AI solutions built for real business impact
         </h1>
         <p className="mb-8 max-w-2xl text-lg text-muted-foreground">
@@ -214,7 +214,7 @@ const Services = () => {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-16 md:px-8 md:py-20">
-        <div className="mb-14 max-w-2xl">
+        <div className="mb-10 max-w-2xl md:mb-14">
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">Platform Capabilities</p>
           <h2 className="text-3xl text-foreground md:text-5xl">Built for scale & reliability</h2>
           <p className="mt-4 text-lg text-muted-foreground">
@@ -235,7 +235,7 @@ const Services = () => {
       </section>
 
       <section className="mx-auto max-w-5xl px-4 py-16 md:px-8 md:py-20">
-        <div className="mb-14 max-w-2xl">
+        <div className="mb-10 max-w-2xl md:mb-14">
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">How We Work</p>
           <h2 className="text-3xl text-foreground md:text-5xl">A proven four-step process</h2>
           <p className="mt-4 text-lg text-muted-foreground">
