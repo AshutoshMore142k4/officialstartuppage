@@ -61,3 +61,14 @@ You can deploy this project using various hosting platforms:
 - Any static hosting service
 
 Simply build the project with `npm run build` and deploy the `dist` folder.
+
+## SEO, AEO and prerendering
+
+Production pages are prerendered to static HTML so search engines and AI crawlers (most of which don't run JavaScript) get full content, per-page metadata and structured data.
+
+- `npm run build` = client build + SSR build (`src/entry-server.tsx`) + `scripts/prerender.mjs`, which writes `dist/<route>/index.html`, `dist/404.html` and `dist/sitemap.xml`, and **fails the build** if a page lacks a title, description, canonical, `<h1>`, valid JSON-LD, or has FAQ markup where no FAQ is visible.
+- Per-page `<title>`, description, Open Graph and JSON-LD come from `SEOHead` (`src/components/SEOHead.tsx`); schema builders live in `src/lib/seo.ts`.
+- **Adding a route:** add the `<Route>` in `src/App.tsx` **and** an entry in `ROUTES` in `src/lib/seo.ts` (this drives prerendering and the sitemap). Give the page a `SEOHead`.
+- Keep `public/llms.txt` and `public/llms-full.txt` in sync when products, docs, pricing or FAQs change.
+- Don't read browser-only values (`navigator`, `localStorage`, `window`) during the first render: the client hydrates the prerendered HTML, so the first render must match the server's. Set them in an effect instead (see `PricingSection`).
+- Hosting (`vercel.json`) serves the prerendered files with clean URLs and a real 404 page for unknown URLs.

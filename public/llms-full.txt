@@ -1,115 +1,164 @@
-# 11startups.tech — Full Context for LLMs
+# 11Startups (11startups.tech) — Full Context for LLMs
 
-> This document provides comprehensive, structured information about 11startups.tech for large language models and AI assistants.
+> Complete, structured information about 11Startups for large language models and AI assistants. Pages are server-rendered HTML; this file is the same information in plain text.
 
-## Company Overview
+## Company overview
 
-**Name**: 11startups.tech
-**Type**: AI Consulting Studio
-**Website**: https://11startups.tech
-**Contact Email**: support@11startups.tech
-**Privacy Email**: privacy@11startups.tech
-
-**Mission**: Help startups and enterprises ship agentic AI systems and integrate LLMs into their workflows — from strategy to deployment.
-
-**Tagline**: Agentic AI & LLM integration for early-stage teams. From strategy to production-ready solutions.
+- **Name**: 11Startups (also written 11startups.tech and 11 Startups)
+- **What it is**: an applied AI company. It develops and fine-tunes language models, builds products on top of them, and offers AI consulting to startups and enterprises.
+- **Website**: https://www.11startups.tech
+- **Founder contact**: founder.ashutoshm@11startups.tech
+- **Support**: support@11startups.tech
+- **Privacy**: privacy@11startups.tech
+- **Book a call**: https://cal.com/ash-28uynq/30min
+- **Profiles**: [GitHub](https://github.com/11Startups/), [LinkedIn](https://www.linkedin.com/company/11startups/), [Product Hunt](https://www.producthunt.com/@11startups)
 
 ---
 
-## Services (Detailed)
+## Products (https://www.11startups.tech/products)
+
+### CodeReportCard
+- **What**: a zero-config code quality report card for React, JavaScript and TypeScript projects. It scores a codebase 0–100 across five categories and prints an overall grade, with an optional summary "roast".
+- **Where**: npm package `codereportcard` (https://www.npmjs.com/package/codereportcard), source at https://github.com/AshutoshMore142k4/codereportcard
+- **Requirements**: Node.js 18 or later. MIT licensed.
+- **Adoption**: 324+ npm downloads.
+
+### Pebble mk1 (100k Params)
+- **What**: a tiny Qwen-style language model (about 100k parameters) that you build and train from scratch on your own CPU, entirely in the browser, then chat with.
+- **Link**: https://how-llms-work.scalable-api-free.workers.dev/chatbot (the app itself is titled "How LLMs Work").
+- **Details**: no install and no GPU required. The first chat message trains the model, which takes about a minute. Temperature, top-p, training epochs and thread count are adjustable. The lessons run from a pattern-matching chat through tokenizer, embeddings, a XOR neural net, softmax and a full transformer.
+
+### GrindSDE
+- **What**: the NeetCode 150 and Striver's SDE Sheet in one place — 341 problems with C++ solutions, organized by pattern and difficulty.
+- **Link**: https://grindsde.app/
+- **Includes**: pattern templates, a LeetCode-to-pattern mapper, side-by-side algorithm comparisons, a system design section and a cheatsheet.
+
+---
+
+## Documentation (https://www.11startups.tech/docs)
+
+### CodeReportCard quick start
+
+```bash
+# Run without installing
+npx codereportcard .
+
+# Or install globally
+npm install -g codereportcard
+codereportcard ./my-project
+```
+
+### CodeReportCard flags
+
+| Command / flag | What it does |
+|---|---|
+| `codereportcard <path>` | Scan a project (use `.` for the current directory) |
+| `--json` | JSON output (for CI/CD) |
+| `--verbose` | Per-file issue breakdown |
+| `--share` | Export a shareable PNG report card |
+| `--share --output report.png` | Custom PNG output path |
+| `--no-roast` | Disable the summary roast |
+| `--fail-under <n>` | CI mode — exit with code 1 if the score is below the threshold |
+| `--diff <branch>` | Only scan files changed vs a branch |
+| `--staged` | Only scan staged files (pre-commit hook) |
+| `init` | Generate a config file |
+
+`--fix` (auto-fix) is listed in the README as coming soon.
+
+### CodeReportCard scoring
+
+Five categories — Clarity, Duplication, Dead Code, Secrets and AI Slop — weighted equally at 20% by default; change the balance with `weights` in the config.
+
+### CodeReportCard configuration
+
+Run `codereportcard init` to generate a config. It is read from `vibecheck.config.js` or `vibecheck.config.mjs`, `.vibecheckrc.json`, or a `"vibecheck"` key in `package.json`. Options: `exclude` (glob patterns), `rules` (per-rule `limit` and `severity`), `thresholds` (per-category minimum scores), `failUnder` (overall minimum; exit code 1 if below) and `weights` (category weights, auto-normalized to sum to 1.0).
+
+### CodeReportCard in CI and pre-commit
+
+```yaml
+# .github/workflows/code-quality.yml
+name: Code quality
+on: [push, pull_request]
+jobs:
+  report-card:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npx codereportcard . --fail-under 75 --json
+```
+
+Pre-commit (for example with husky): `npx codereportcard . --staged --fail-under 70`
+
+---
+
+## Consulting services (https://www.11startups.tech/services)
 
 ### 1. AI Strategy Consulting
-- **What**: Audit your operations, identify high-impact AI use cases, build a prioritised roadmap.
-- **Deliverables**: AI readiness assessment, opportunity mapping & ROI analysis, technology stack recommendations, executive-ready implementation roadmap.
-- **Best For**: Companies exploring AI but unsure where to start.
+Audit operations, identify high-impact AI use cases, build a prioritised roadmap. Deliverables: AI readiness assessment, opportunity mapping and ROI analysis, technology stack recommendations, executive-ready implementation roadmap.
 
 ### 2. Rapid Prototyping
-- **What**: Go from concept to working AI prototype in 2–4 weeks.
-- **Deliverables**: Working prototype, iterative feedback loops, risk-free concept validation, seamless handoff to production.
-- **Best For**: Startups validating AI product ideas quickly.
+Go from concept to a working AI prototype in 2–4 weeks. Deliverables: working prototype, iterative feedback loops, risk-free concept validation, handoff to production.
 
 ### 3. Workflow Automation
-- **What**: Deploy intelligent agents that learn processes and handle repetitive tasks (document processing, customer routing, etc.).
-- **Deliverables**: Custom AI agent development, document & data extraction, intelligent task routing, continuous process optimisation.
-- **Best For**: Operations teams drowning in manual, repetitive work.
+Intelligent agents that learn processes and handle repetitive tasks such as document processing and customer routing. Deliverables: custom AI agent development, document and data extraction, intelligent task routing, continuous process optimisation.
 
 ### 4. Data Analytics & Insights
-- **What**: Build advanced ML pipelines and dashboards that surface hidden patterns.
-- **Deliverables**: Custom ML model development, real-time analytics dashboards, predictive forecasting, natural language querying.
-- **Best For**: Data-rich companies that need actionable intelligence.
+Advanced ML pipelines and dashboards that surface hidden patterns. Deliverables: custom ML models, real-time analytics dashboards, predictive forecasting, natural language querying.
 
 ### 5. AI Safety & Compliance
-- **What**: Navigate regulatory landscape with governance frameworks and bias auditing.
-- **Deliverables**: Bias & fairness auditing, regulatory compliance (EU AI Act, etc.), model explainability reports, AI ethics governance playbook.
-- **Best For**: Enterprises deploying AI in regulated industries.
+Governance frameworks and bias auditing. Deliverables: bias and fairness auditing, regulatory compliance support (EU AI Act and others), model explainability reports, AI ethics governance playbook.
 
 ### 6. Ongoing Support & Optimisation
-- **What**: Dedicated AI engineers monitor, fine-tune, and scale solutions post-launch.
-- **Deliverables**: Proactive monitoring & alerting, model retraining & drift detection, performance optimisation sprints, 24/7 enterprise SLA available on the Scale plan.
-- **Best For**: Companies that need production AI to keep performing.
+Monitoring, fine-tuning and scaling of solutions after launch. Deliverables: monitoring and alerting, model retraining and drift detection, performance optimisation sprints; 24/7 SLA on the Scale plan.
+
+### Platform capabilities
+Multi-cloud deployment (AWS, Azure, GCP); modular architecture; security-first design (end-to-end encryption, access controls, audit logging); real-time monitoring of accuracy, latency and drift; custom AI agents; continuous learning through automatic retraining.
+
+### Process
+1. Discovery — business, data and goals. 2. Design — models, data pipelines, integrations. 3. Build — develop, test and iterate with weekly demos; the aim is a working prototype in under 4 weeks. 4. Deploy & Scale — production launch with monitoring and a scaling plan.
 
 ---
 
-## Pricing Plans
+## Pricing (https://www.11startups.tech/#pricing)
 
-Prices shown are proposed market-rate figures. Two currencies (USD, INR) and monthly/yearly billing are available; INR is inclusive of 18% GST. AI usage — model API tokens, inference, and compute — is billed directly to the client's own provider accounts and is never marked up.
+Monthly or yearly billing, in USD or INR (INR includes 18% GST). Yearly billing is 10× the monthly rate (2 months free). AI usage — model API tokens, inference and compute — is billed directly to the client's own provider accounts and is not marked up.
 
-| Plan | Monthly (USD) | Monthly (INR, incl. GST) | Key Inclusions |
-|------|---------------|---------------------------|-----------------|
-| Starter | $599/mo | ₹45,000/mo | AI readiness assessment, 1 consultation/month, email support, basic workflow analysis, implementation roadmap |
-| Growth (Most Popular) | $1,799/mo | ₹1,35,000/mo | Everything in Starter + 4 consultations/month, custom AI model prototyping, priority support, dedicated AI engineer, monthly performance reports |
-| Scale | $4,499/mo | ₹3,50,000/mo | Everything in Growth + unlimited consultations, on-site workshops, AI safety & compliance audit, custom model training, 24/7 dedicated support |
-
-Yearly billing is 10× the monthly rate (2 months free).
+| Plan | Monthly (USD) | Monthly (INR, incl. GST) | Includes |
+|---|---|---|---|
+| Starter | $599 | ₹45,000 | AI readiness assessment, 1 consultation/month, email support, basic workflow analysis, implementation roadmap |
+| Growth (most popular) | $1,799 | ₹1,35,000 | Everything in Starter plus 4 consultations/month, custom AI model prototyping, priority support, dedicated AI engineer, monthly performance reports |
+| Scale | $4,499 | ₹3,50,000 | Everything in Growth plus unlimited consultations, on-site workshops, AI safety and compliance audit, custom model training, 24/7 dedicated support |
 
 ---
 
-## Platform Capabilities
+## Frequently asked questions (https://www.11startups.tech/support)
 
-- **Multi-Cloud Deployment**: AWS, Azure, GCP — infrastructure-agnostic, no vendor lock-in.
-- **Modular Architecture**: Plug-and-play AI modules; start small, compose complex solutions.
-- **Security-First Architecture**: End-to-end encryption, strict access controls, audit logging.
-- **Real-Time Monitoring**: Live dashboards for model accuracy, latency, and drift.
-- **Custom AI Agents**: Autonomous agents for support bots, data extractors, and more.
-- **Continuous Learning**: Automatic model retraining on fresh data.
+**How do I get started?** Book a free consultation at https://cal.com/ash-28uynq/30min or email founder.ashutoshm@11startups.tech. We schedule a call to understand your needs and propose an approach.
 
----
+**What industries do you serve?** Fintech, healthcare, e-commerce, logistics, SaaS and more; solutions are tailored to each sector.
 
-## Process (How We Work)
+**How long does a typical project take?** A proof of concept or prototype typically takes 2–4 weeks; a full production implementation can take 2–3 months. Detailed timelines are given in the initial consultation.
 
-1. **Discovery** — Deep-dive into business, data, and goals.
-2. **Design** — Architect tailored solution (models, pipelines, integrations).
-3. **Build** — Develop, test, iterate with weekly demos. We aim to ship a working prototype in under 4 weeks.
-4. **Deploy & Scale** — Production launch with monitoring and scaling plan.
+**Do you offer ongoing support after launch?** Yes — dedicated support and maintenance plans covering monitoring, updates and iterative improvements.
+
+**What is your pricing model?** Monthly and yearly plans in USD or INR (see Pricing above). AI usage is billed directly to your own provider accounts.
+
+**Can I cancel or change my plan?** Yes — upgrade, downgrade or cancel at any time, with no hidden fees or long-term lock-ins.
 
 ---
 
-## Sitemap
+## Pages
 
-- **Home**: https://11startups.tech/
-- **Services**: https://11startups.tech/services (includes platform capabilities; `/features` redirects here)
-- **About**: https://11startups.tech/about
-- **Privacy Policy**: https://11startups.tech/privacy-policy
-- **Support / Help Center**: https://11startups.tech/support
-
----
-
-## Frequently Asked Questions
-
-**Q: How do I get started with 11startups.tech?**
-A: Click "Get Started" to book a free consultation, or reach out via the contact form.
-
-**Q: What industries do you serve?**
-A: Fintech, healthcare, e-commerce, logistics, SaaS, and more. Solutions are tailored per sector.
-
-**Q: How long does a typical project take?**
-A: Proof-of-concept: 2–4 weeks. Full production: 2–3 months. Detailed timelines provided during consultation.
-
-**Q: Do you offer ongoing support after launch?**
-A: Yes — dedicated support & maintenance plans with monitoring, updates, and iterative improvements.
-
-**Q: What is your pricing model?**
-A: Monthly and yearly plans in USD or INR (see Pricing Plans above). AI usage is billed at cost to the client's own provider accounts.
-
-**Q: Can I cancel or change my plan?**
-A: Yes — upgrade, downgrade, or cancel anytime. No hidden fees or long-term lock-ins.
+- Home: https://www.11startups.tech/
+- Products: https://www.11startups.tech/products
+- Docs: https://www.11startups.tech/docs
+- Services: https://www.11startups.tech/services (`/features` redirects here)
+- About: https://www.11startups.tech/about
+- Support / FAQ: https://www.11startups.tech/support
+- Privacy Policy: https://www.11startups.tech/privacy-policy
+- Terms of Service: https://www.11startups.tech/terms
+- Disclaimer: https://www.11startups.tech/disclaimer
+- Sitemap: https://www.11startups.tech/sitemap.xml

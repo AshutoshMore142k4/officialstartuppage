@@ -13,9 +13,20 @@ export default {
       },
     },
     extend: {
+      // Type scale. Body sizes get the spec line-heights (1.6 / 1.5); the named
+      // tokens bundle size + leading + tracking + weight so headings stay consistent.
+      fontSize: {
+        sm: ["0.875rem", { lineHeight: "1.5" }],
+        base: ["1rem", { lineHeight: "1.6" }],
+        lg: ["1.125rem", { lineHeight: "1.6" }],
+        display: ["clamp(2.25rem, 1.25rem + 4vw, 4rem)", { lineHeight: "1.05", letterSpacing: "-0.025em", fontWeight: "300" }],
+        title: ["clamp(1.875rem, 1.3rem + 2.4vw, 3rem)", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "300" }],
+        heading: ["clamp(1.75rem, 1.3rem + 1.6vw, 2.25rem)", { lineHeight: "1.15", letterSpacing: "-0.015em", fontWeight: "400" }],
+        subheading: ["clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem)", { lineHeight: "1.3", letterSpacing: "-0.01em", fontWeight: "500" }],
+        eyebrow: ["0.75rem", { lineHeight: "1rem", letterSpacing: "0.08em", fontWeight: "400" }],
+      },
       fontFamily: {
-        sans: ["Geist", "system-ui", "-apple-system", "Segoe UI", "sans-serif"],
-        mono: ["Geist Mono", "ui-monospace", "SFMono-Regular", "monospace"],
+        sans: ['"Helvetica Neue"', "Helvetica", "Arial", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

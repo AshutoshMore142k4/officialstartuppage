@@ -1,16 +1,20 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Sun, Moon } from 'lucide-react';
+import { Sun, Moon, ChevronDown } from 'lucide-react';
 import { Button, buttonVariants } from '@/components/ui/button';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { products } from '@/data/products';
 import { cn } from '@/lib/utils';
 import { Logo } from '@/components/Logo';
 import { MenuToggleIcon } from '@/components/ui/menu-toggle-icon';
 import { useScroll } from '@/components/ui/use-scroll';
 import { useTheme } from '@/components/theme-provider';
+import { AnnouncementBanner } from '@/components/AnnouncementBanner';
 
 const CAL_LINK = 'https://cal.com/ash-28uynq/30min';
 
 const links = [
+  { label: 'Docs', href: '/docs' },
   { label: 'Services', href: '/services' },
   { label: 'Pricing', href: '#pricing' },
   { label: 'About', href: '/about' },
@@ -59,8 +63,11 @@ function NavItem({ href, label, className, onClick }: { href: string; label: str
 
 export function SiteHeader() {
   const [open, setOpen] = React.useState(false);
-  const scrolled = useScroll(10);
+  const pill = useScroll(10) && !open;
   const menuButtonRef = React.useRef<HTMLButtonElement>(null);
+  const headerRef = React.useRef<HTMLElement>(null);
+  // The banner above the header scrolls away, so the menu panel can't assume the header sits at y=64.
+  const [panelTop, setPanelTop] = React.useState(64);
   const { resolvedTheme } = useTheme();
   const { pathname } = useLocation();
 
@@ -115,37 +122,73 @@ export function SiteHeader() {
 
   return (
     <>
+      <AnnouncementBanner />
       <header
+        ref={headerRef}
         className={cn(
           'sticky top-0 z-50 w-full transition-colors',
-          scrolled || open ? 'glass border-b border-transparent' : 'border-b border-transparent bg-transparent',
+          open ? 'glass-nav' : 'border-b border-transparent bg-transparent',
         )}
       >
-      <nav className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-[max(1rem,env(safe-area-inset-left))] md:px-8">
+      {/*
+        On scroll the bar collapses into a floating pill. mt-2 + h-14 = h-16, so the header's
+        layout height never changes and the page doesn't jump. The mobile menu keeps the
+        full-width bar (`open` above) because its panel is anchored to the 64px header.
+      */}
+      <nav
+        className={cn(
+          'mx-auto flex items-center justify-between transition-[width,max-width,height,margin,padding,border-radius,background-color,box-shadow] duration-300 ease-out motion-reduce:transition-none',
+          pill
+            ? 'glass-nav mt-2 h-14 w-[calc(100%-1.5rem)] max-w-5xl rounded-full px-4 lg:px-6'
+            : 'border border-transparent h-16 w-full max-w-6xl px-[max(1rem,env(safe-area-inset-left))] lg:px-8',
+        )}
+      >
         <Link to="/" className="-mx-2 flex min-h-11 items-center gap-2 px-2">
           <Logo size="sm" />
           <span className="text-base font-semibold tracking-tight text-foreground">11Startups</span>
         </Link>
 
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden items-center gap-1 lg:flex">
           {links.map((link) => (
             <NavItem
               key={link.label}
               href={link.href}
               label={link.label}
-              className={buttonVariants({ variant: 'ghost', className: 'text-muted-foreground' })}
+              className={buttonVariants({ variant: 'ghost', className: 'text-foreground/80 hover:text-foreground' })}
             />
           ))}
         </div>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-3 lg:flex">
           <ThemeToggle />
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline">
+                Try our products
+                <ChevronDown className="ml-1 size-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-64">
+              {products.map((p) => (
+                <DropdownMenuItem key={p.name} asChild className="cursor-pointer flex-col items-start gap-0.5">
+                  <a href={p.href} target="_blank" rel="noopener noreferrer">
+                    <span className="font-medium">{p.name}</span>
+                    {p.stat && <span className="text-xs text-muted-foreground">{p.stat}</span>}
+                  </a>
+                </DropdownMenuItem>
+              ))}
+              <DropdownMenuSeparator />
+              <DropdownMenuItem asChild className="cursor-pointer">
+                <Link to="/products">View all products</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
           <a href={CAL_LINK} target="_blank" rel="noopener noreferrer" className={buttonVariants({ variant: 'default' })}>
             Get Started
           </a>
         </div>
 
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
           <ThemeToggle />
           <Button
             ref={menuButtonRef}
@@ -154,7 +197,10 @@ export function SiteHeader() {
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
             aria-controls="mobile-menu"
-            onClick={() => setOpen(!open)}
+            onClick={() => {
+              setPanelTop(headerRef.current?.getBoundingClientRect().bottom ?? 64);
+              setOpen(!open);
+            }}
           >
             <MenuToggleIcon open={open} className="size-5" duration={300} />
           </Button>
@@ -163,7 +209,7 @@ export function SiteHeader() {
       </header>
 
       {/*
-        This panel MUST stay outside <header>. The header carries `glass`
+        This panel MUST stay outside <header>. The header carries `glass-nav`
         (backdrop-filter) whenever it is scrolled or open, and a non-none
         backdrop-filter makes an element a containing block for its
         position:fixed descendants. Nested inside, the panel's `top-16
@@ -177,9 +223,10 @@ export function SiteHeader() {
         aria-modal="true"
         aria-label="Site menu"
         className={cn(
-          'glass fixed inset-x-0 top-16 bottom-0 z-40 flex-col overflow-y-auto border-t-0 md:hidden',
+          'glass-nav fixed inset-x-0 bottom-0 z-40 flex-col overflow-y-auto lg:hidden',
           open ? 'flex' : 'hidden',
         )}
+        style={{ top: panelTop }}
       >
         <div className="flex min-h-full w-full flex-col gap-y-2 p-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
           <div className="grid gap-y-1">
@@ -193,11 +240,29 @@ export function SiteHeader() {
               />
             ))}
           </div>
+          <div className="mt-4 grid gap-y-1 border-t border-border pt-4">
+            <p className="px-3 text-eyebrow uppercase text-muted-foreground">Try our products</p>
+            {products.map((p) => (
+              <a
+                key={p.name}
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={close}
+                className={buttonVariants({ variant: 'ghost', className: 'h-12 justify-start text-base' })}
+              >
+                {p.name}
+              </a>
+            ))}
+            <Link to="/products" onClick={close} className={buttonVariants({ variant: 'ghost', className: 'h-12 justify-start text-base' })}>
+              View all products
+            </Link>
+          </div>
           <a
             href={CAL_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className={buttonVariants({ size: 'lg', className: 'mt-auto w-full' })}
+            className={buttonVariants({ size: 'lg', className: 'mt-auto w-full shrink-0' })}
             onClick={close}
           >
             Get Started

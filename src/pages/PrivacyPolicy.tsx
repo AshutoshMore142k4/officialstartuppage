@@ -17,13 +17,13 @@ const PrivacyPolicy = () => {
       title="Privacy Policy"
       description="How 11startups.tech handles personal data. The Site collects no personal data: no cookies, no analytics, no tracking, and no data-collecting forms."
       canonical="/privacy-policy"
-      lastUpdated="August 7, 2026"
+      lastUpdated="October 18, 2026"
     >
       <section>
         <h2>1. Introduction</h2>
         <p>
           This policy explains how personal data is handled on <strong>11startups.tech</strong> (the "Site"). The
-          Site is operated as a sole proprietorship based in India. For the purposes of the Digital Personal Data
+          Site is operated as a sole proprietorship based in Pune, Maharashtra, India. For the purposes of the Digital Personal Data
           Protection Act, 2023 ("DPDP Act"), we are the <strong>Data Fiduciary</strong> and you are the{' '}
           <strong>Data Principal</strong>.
         </p>
@@ -128,9 +128,8 @@ const PrivacyPolicy = () => {
         <p>
           The Site itself retains nothing, so there is no Site-level retention period. If you email or book a call
           with us directly, we keep that correspondence only for as long as needed to deal with your enquiry and to
-          maintain a reasonable record of it, and no longer than{' '}
-          <strong>[RETENTION PERIOD, e.g. 24 months]</strong> from your last contact with us, unless a longer period
-          is required by law or to establish or defend a legal claim. You may ask us to erase such data sooner (see
+          maintain a reasonable record of it, and we delete it once it is no longer needed for those purposes, unless a
+          longer period is required by law or to establish or defend a legal claim. You may ask us to erase such data sooner (see
           section 9). Server logs are retained per our hosting provider's standard log-retention period.
         </p>
       </section>
@@ -183,7 +182,8 @@ const PrivacyPolicy = () => {
       <section>
         <h2>10. Grievance Officer</h2>
         <p>
-          In accordance with the DPDP Act, the contact point for privacy grievances is{' '}
+          In accordance with the DPDP Act, the Grievance Officer for privacy matters is Ashutosh More, founder of
+          11Startups, Pune, Maharashtra, India, reachable at{' '}
           <a href="mailto:privacy@11startups.tech">privacy@11startups.tech</a>.
         </p>
       </section>
@@ -221,7 +221,7 @@ const PrivacyPolicy = () => {
         <p>
           For any privacy question, email{' '}
           <a href="mailto:privacy@11startups.tech">privacy@11startups.tech</a>. For general enquiries, email{' '}
-          <a href="mailto:hello@11startups.tech">hello@11startups.tech</a>.
+          <a href="mailto:founder.ashutoshm@11startups.tech">founder.ashutoshm@11startups.tech</a>.
         </p>
       </section>
     </LegalPage>

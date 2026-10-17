@@ -18,8 +18,8 @@ const NotFound = () => {
         noIndex
       />
       <div className="text-center">
-        <p className="mb-2 text-sm font-medium uppercase tracking-widest text-muted-foreground">404</p>
-        <h1 className="mb-4 text-4xl font-bold">Page not found</h1>
+        <p className="mb-2 text-eyebrow uppercase text-muted-foreground">404</p>
+        <h1 className="mb-4 text-title">Page not found</h1>
         <Link to="/" className="text-foreground underline underline-offset-4 hover:text-muted-foreground">
           Return to Home
         </Link>

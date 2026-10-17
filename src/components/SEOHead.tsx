@@ -1,50 +1,59 @@
 import { Helmet } from 'react-helmet-async';
+import { DEFAULT_IMAGE, DEFAULT_TITLE, SITE, organization, website } from '@/lib/seo';
 
 interface SEOHeadProps {
+  /** Page title; the brand is appended. Omit on the home page to use DEFAULT_TITLE. */
   title?: string;
   description?: string;
   canonical?: string;
   ogType?: string;
   noIndex?: boolean;
+  /** Page-specific schema.org nodes, merged with Organization + WebSite into one @graph. */
+  jsonLd?: Record<string, unknown>[];
 }
-
-const SITE_NAME = '11startups.tech';
-const BASE_URL = 'https://11startups.tech';
-const DEFAULT_DESCRIPTION =
-  '11startups.tech specializes in agentic AI and LLM integration — strategy, rapid prototyping, workflow automation, data analytics, compliance, and ongoing support.';
 
 export function SEOHead({
   title,
-  description = DEFAULT_DESCRIPTION,
+  description = SITE.description,
   canonical,
   ogType = 'website',
   noIndex = false,
+  jsonLd = [],
 }: SEOHeadProps) {
-  const fullTitle = title ? `${title} — ${SITE_NAME}` : `${SITE_NAME} — Agentic AI & LLM Integration`;
-  const url = canonical ? `${BASE_URL}${canonical}` : BASE_URL;
+  const fullTitle = title ? `${title} | ${SITE.name}` : DEFAULT_TITLE;
+  const url = canonical ? `${SITE.url}${canonical === '/' ? '/' : canonical}` : `${SITE.url}/`;
+  const graph = JSON.stringify({ '@context': 'https://schema.org', '@graph': [organization(), website(), ...jsonLd] });
 
   return (
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      <meta
+        name="robots"
+        content={noIndex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'}
+      />
       <link rel="canonical" href={url} />
-      {noIndex && <meta name="robots" content="noindex,nofollow" />}
 
       {/* Open Graph */}
+      <meta property="og:site_name" content={SITE.name} />
+      <meta property="og:locale" content={SITE.locale} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
       <meta property="og:type" content={ogType} />
-      <meta property="og:image" content={`${BASE_URL}/favicon.png`} />
-      <meta property="og:image:width" content="180" />
-      <meta property="og:image:height" content="180" />
-      <meta property="og:image:alt" content="11startups.tech logo" />
+      <meta property="og:image" content={DEFAULT_IMAGE} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content="11Startups — applied AI research, language models and developer tools" />
 
       {/* Twitter */}
-      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content={SITE.twitter} />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={`${BASE_URL}/favicon.png`} />
+      <meta name="twitter:image" content={DEFAULT_IMAGE} />
+
+      <script type="application/ld+json">{graph}</script>
     </Helmet>
   );
 }

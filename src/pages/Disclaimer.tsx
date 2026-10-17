@@ -10,7 +10,7 @@ const Disclaimer = () => {
       title="Disclaimer"
       description="Important limitations regarding AI outcomes, third-party model behaviour, timelines, and the informational nature of content on 11startups.tech."
       canonical="/disclaimer"
-      lastUpdated="August 7, 2026"
+      lastUpdated="October 18, 2026"
     >
       <section>
         <h2>1. General information only</h2>
@@ -135,7 +135,7 @@ const Disclaimer = () => {
         <h2>9. Contact</h2>
         <p>
           Questions about this Disclaimer can be sent to{' '}
-          <a href="mailto:hello@11startups.tech">hello@11startups.tech</a>.
+          <a href="mailto:founder.ashutoshm@11startups.tech">founder.ashutoshm@11startups.tech</a>.
         </p>
       </section>
     </LegalPage>

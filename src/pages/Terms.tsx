@@ -12,13 +12,13 @@ const Terms = () => {
       title="Terms of Service"
       description="The terms governing your use of the 11startups.tech website, including acceptable use, intellectual property, disclaimers, and limitation of liability."
       canonical="/terms"
-      lastUpdated="August 7, 2026"
+      lastUpdated="October 18, 2026"
     >
       <section>
         <h2>1. Who we are</h2>
         <p>
           This website, <strong>11startups.tech</strong> (the "Site"), is operated as a sole proprietorship based
-          in India. In these Terms, "we", "us" and "our" refer to that sole proprietor.
+          in Pune, Maharashtra, India. In these Terms, "we", "us" and "our" refer to that sole proprietor.
         </p>
         <p>
           11startups.tech is a trading name, not a registered company. Nothing on this Site should be read as
@@ -155,7 +155,8 @@ const Terms = () => {
         </p>
         <p>
           To the fullest extent permitted by applicable law, our total aggregate liability arising out of or in
-          connection with your use of the Site shall not exceed <strong>INR [AMOUNT, e.g. 10,000]</strong>.
+          connection with your use of the Site shall not exceed the total fees, if any, that you paid to us for the specific service giving rise to the
+          claim in the twelve months before the claim arose.
         </p>
         <p>
           Nothing in these Terms excludes or limits liability that cannot lawfully be excluded or limited,
@@ -188,7 +189,7 @@ const Terms = () => {
         <p>
           These Terms are governed by and construed in accordance with the laws of India. Subject to any
           non-excludable rights you may have under consumer protection law, the courts at{' '}
-          <strong>[CITY], [STATE]</strong>, India shall have exclusive jurisdiction over any dispute arising out of
+          <strong>Pune, Maharashtra</strong>, India shall have exclusive jurisdiction over any dispute arising out of
           or in connection with these Terms or the Site.
         </p>
       </section>
@@ -205,7 +206,7 @@ const Terms = () => {
         <h2>16. Contact</h2>
         <p>
           Questions about these Terms can be sent to{' '}
-          <a href="mailto:hello@11startups.tech">hello@11startups.tech</a>.
+          <a href="mailto:founder.ashutoshm@11startups.tech">founder.ashutoshm@11startups.tech</a>.
         </p>
       </section>
     </LegalPage>

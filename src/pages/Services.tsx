@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { GlowingEffect } from '@/components/ui/glowing-effect';
 import { motion } from 'framer-motion';
 import { SEOHead } from '@/components/SEOHead';
+import { breadcrumbs, serviceList, webPage } from '@/lib/seo';
 import {
   Brain,
   Zap,
@@ -94,7 +95,7 @@ const services = [
     title: 'Ongoing Support & Optimisation',
     tagline: 'We grow with you',
     description:
-      'Dedicated AI engineers monitor, fine-tune, and scale your solutions post-launch, ensuring peak performance as your business evolves.',
+      'We monitor, fine-tune, and scale your solutions post-launch, ensuring peak performance as your business evolves.',
     benefits: [
       'Proactive monitoring & alerting',
       'Model retraining & drift detection',
@@ -139,7 +140,7 @@ const platformCapabilities = [
 
 const processSteps = [
   { step: '01', title: 'Discovery', description: 'We deep-dive into your business, data, and goals to pinpoint the highest-value AI opportunities.' },
-  { step: '02', title: 'Design', description: 'Our team architects a tailored solution — selecting the right models, data pipelines, and integration points.' },
+  { step: '02', title: 'Design', description: 'We architect a tailored solution — selecting the right models, data pipelines, and integration points.' },
   { step: '03', title: 'Build', description: 'We develop, test, and iterate rapidly, keeping you in the loop with weekly demos and feedback cycles.' },
   { step: '04', title: 'Deploy & Scale', description: 'We launch into production with monitoring, support, and a clear plan for scaling impact over time.' },
 ];
@@ -148,14 +149,20 @@ const Services = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Services"
-        description="Explore 11startups.tech AI consulting services — strategy, rapid prototyping, workflow automation, data analytics, AI safety & compliance, and ongoing support."
+        title="AI Consulting Services"
+        description="AI consulting from 11Startups: strategy, rapid prototyping, workflow automation, data analytics, AI safety and compliance, and ongoing support."
         canonical="/services"
+        jsonLd={[
+          webPage('WebPage', '/services', 'AI Consulting Services', 'AI consulting services from 11Startups.'),
+          breadcrumbs('/services', 'Services'),
+          serviceList(),
+        ]}
       />
       <SiteHeader />
+      <main>
       <section className="relative mx-auto max-w-6xl px-4 pb-16 pt-20 md:px-8 md:pb-20 md:pt-28">
-        <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">Our Services</p>
-        <h1 className="mb-5 max-w-3xl text-3xl leading-tight text-foreground sm:text-4xl md:text-6xl">
+        <p className="mb-3 text-eyebrow uppercase text-muted-foreground">Our Services</p>
+        <h1 className="mb-5 max-w-3xl text-title text-foreground">
           AI solutions built for real business impact
         </h1>
         <p className="mb-8 max-w-2xl text-lg text-muted-foreground">
@@ -194,8 +201,8 @@ const Services = () => {
                 </div>
 
                 <div className="flex-1">
-                  <p className="mb-1 text-xs uppercase tracking-widest text-muted-foreground">{service.tagline}</p>
-                  <h3 className="mb-3 text-xl font-semibold text-foreground md:text-2xl">{service.title}</h3>
+                  <p className="mb-1 text-eyebrow uppercase text-muted-foreground">{service.tagline}</p>
+                  <h3 className="mb-3 text-subheading text-foreground">{service.title}</h3>
                   <p className="mb-5 max-w-2xl leading-relaxed text-muted-foreground">{service.description}</p>
 
                   <ul className="grid gap-3 sm:grid-cols-2">
@@ -215,8 +222,8 @@ const Services = () => {
 
       <section className="mx-auto max-w-6xl px-4 py-16 md:px-8 md:py-20">
         <div className="mb-10 max-w-2xl md:mb-14">
-          <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">Platform Capabilities</p>
-          <h2 className="text-3xl text-foreground md:text-5xl">Built for scale & reliability</h2>
+          <p className="mb-3 text-eyebrow uppercase text-muted-foreground">Platform Capabilities</p>
+          <h2 className="text-heading text-foreground">Built for scale & reliability</h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Our infrastructure is designed to grow with you — secure, observable, and cloud-agnostic from day one.
           </p>
@@ -227,7 +234,7 @@ const Services = () => {
             <div key={feature.title} className="glass-card relative rounded-2xl p-6">
               <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} />
               <feature.icon className="mb-4 h-5 w-5 text-muted-foreground" />
-              <h3 className="mb-2 text-base font-semibold text-foreground">{feature.title}</h3>
+              <h3 className="mb-2 text-subheading text-foreground">{feature.title}</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">{feature.description}</p>
             </div>
           ))}
@@ -236,8 +243,8 @@ const Services = () => {
 
       <section className="mx-auto max-w-5xl px-4 py-16 md:px-8 md:py-20">
         <div className="mb-10 max-w-2xl md:mb-14">
-          <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">How We Work</p>
-          <h2 className="text-3xl text-foreground md:text-5xl">A proven four-step process</h2>
+          <p className="mb-3 text-eyebrow uppercase text-muted-foreground">How We Work</p>
+          <h2 className="text-heading text-foreground">A proven four-step process</h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Transparent, iterative, and designed to get you from idea to impact as fast as possible.
           </p>
@@ -254,8 +261,8 @@ const Services = () => {
               className="glass-card relative rounded-2xl p-6"
             >
               <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} />
-              <span className="mb-2 block text-4xl font-semibold text-muted-foreground/30">{item.step}</span>
-              <h4 className="mb-2 font-semibold text-foreground">{item.title}</h4>
+              <span className="mb-2 block text-4xl font-light tabular-nums text-muted-foreground/30">{item.step}</span>
+              <h3 className="mb-2 text-subheading text-foreground">{item.title}</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">{item.description}</p>
             </motion.div>
           ))}
@@ -263,6 +270,7 @@ const Services = () => {
       </section>
 
       <CTASection />
+      </main>
       <Footer />
     </div>
   );
