@@ -2,6 +2,7 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { Footer } from '@/components/Footer';
 import { CTASection } from '@/components/CTASection';
 import { SEOHead } from '@/components/SEOHead';
+import { breadcrumbs, webPage } from '@/lib/seo';
 import { Button } from '@/components/ui/button';
 import { GlowingEffect } from '@/components/ui/glowing-effect';
 import { motion } from 'framer-motion';
@@ -78,15 +79,20 @@ const About = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="About"
-        description="Learn about 11startups.tech — our mission, values, and approach to helping startups and enterprises harness AI for measurable business impact."
+        title="About Us"
+        description="Learn about 11Startups: our mission, values, and approach to helping startups and enterprises apply AI for measurable business impact."
         canonical="/about"
+        jsonLd={[
+          webPage('AboutPage', '/about', 'About 11Startups', 'About 11Startups: mission, values and approach.'),
+          breadcrumbs('/about', 'About'),
+        ]}
       />
       <SiteHeader />
 
+      <main>
       <section className="relative mx-auto max-w-6xl px-4 pb-16 pt-20 md:px-8 md:pb-20 md:pt-28">
-        <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">About Us</p>
-        <h1 className="mb-5 max-w-3xl text-3xl leading-tight text-foreground sm:text-4xl md:text-6xl">
+        <p className="mb-3 text-eyebrow uppercase text-muted-foreground">About Us</p>
+        <h1 className="mb-5 max-w-3xl text-title text-foreground">
           We help startups turn AI into unfair advantages
         </h1>
         <p className="mb-8 max-w-2xl text-lg text-muted-foreground">
@@ -103,8 +109,8 @@ const About = () => {
       <section className="mx-auto max-w-5xl px-4 py-16 md:px-8 md:py-20">
         <div className="grid items-center gap-12 md:grid-cols-2">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
-            <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">Our Mission</p>
-            <h2 className="mb-5 text-3xl leading-tight text-foreground md:text-4xl">
+            <p className="mb-3 text-eyebrow uppercase text-muted-foreground">Our Mission</p>
+            <h2 className="mb-5 text-heading text-foreground">
               Democratising AI for the next generation of startups
             </h2>
             <p className="mb-4 leading-relaxed text-muted-foreground">
@@ -129,15 +135,15 @@ const About = () => {
               "Our goal is simple: help every ambitious company unlock the power of AI — with speed, safety, and
               measurable results."
             </blockquote>
-            <p className="mt-4 text-sm text-muted-foreground">— The 11startups team</p>
+            <p className="mt-4 text-sm text-muted-foreground">— The founder, 11Startups</p>
           </motion.div>
         </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-16 md:px-8 md:py-20">
         <div className="mb-10 max-w-2xl md:mb-14">
-          <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">Our Values</p>
-          <h2 className="text-3xl leading-tight text-foreground md:text-4xl">
+          <p className="mb-3 text-eyebrow uppercase text-muted-foreground">Our Values</p>
+          <h2 className="text-heading text-foreground">
             The principles that guide everything we build
           </h2>
         </div>
@@ -156,7 +162,7 @@ const About = () => {
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-md bg-secondary text-foreground">
                 <value.icon className="h-5 w-5" />
               </div>
-              <h3 className="mb-2 text-lg font-semibold text-foreground">{value.title}</h3>
+              <h3 className="mb-2 text-subheading text-foreground">{value.title}</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">{value.description}</p>
             </motion.div>
           ))}
@@ -165,11 +171,11 @@ const About = () => {
 
       <section className="mx-auto max-w-5xl px-4 py-16 md:px-8 md:py-20">
         <div className="mb-10 max-w-2xl md:mb-14">
-          <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">How We're Built</p>
-          <h2 className="text-3xl leading-tight text-foreground md:text-4xl">A small, senior team</h2>
+          <p className="mb-3 text-eyebrow uppercase text-muted-foreground">How We're Built</p>
+          <h2 className="text-heading text-foreground">Independent and hands-on</h2>
           <p className="mt-4 text-muted-foreground">
-            We're a lean, senior team of AI engineers, strategists, data scientists, and designers who've shipped
-            ML products before. No layers, no handoffs — you work directly with the people building your solution.
+            11Startups is an independent studio run by its founder in Pune, India. No layers, no handoffs — you work
+            directly with the person building your solution.
           </p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2">
@@ -184,7 +190,7 @@ const About = () => {
               custom={i}
             >
               <GlowingEffect spread={40} glow proximity={64} inactiveZone={0.01} />
-              <h3 className="mb-2 text-lg font-semibold text-foreground">{c.name}</h3>
+              <h3 className="mb-2 text-subheading text-foreground">{c.name}</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">{c.description}</p>
             </motion.div>
           ))}
@@ -192,6 +198,7 @@ const About = () => {
       </section>
 
       <CTASection />
+      </main>
       <Footer />
     </div>
   );

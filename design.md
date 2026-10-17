@@ -10,7 +10,38 @@ A Vercel-grade design language: monochrome, asymmetric, restrained. This documen
 2. **One accent family, deployed twice.** The entire site is black, white, and grey — with exactly one colour *palette* (a cyan → blue → purple → pink prism), used in exactly two places: the hero's Pixel Canvas, and the glow that traces a card's border on hover. Its scarcity is what makes it read as premium. Do not introduce a third use.
 3. **Hairlines, not boxes.** 1px borders at low contrast. No heavy shadows except on hover.
 4. **Motion with intent.** Every animation answers "what did the user just do?" Ambient motion is slow enough to be felt, not watched (20s+ cycles).
-5. **Type does the work.** Geist, tight tracking on display sizes, generous line-height on body. Hierarchy comes from size and weight, never colour.
+5. **Type does the work.** Helvetica Neue, light at display sizes, generous line-height on body. Hierarchy comes from size and weight, never colour.
+
+---
+
+## Typography
+
+One family: `"Helvetica Neue", Helvetica, Arial, sans-serif` (`fontFamily.sans` in `tailwind.config.ts`). No font files are bundled — Helvetica Neue is a licensed system font on macOS/iOS, and other platforms fall back to Helvetica/Arial. Arial has no light weight, so on Windows/Android the 300 and 500 weights render as regular (never faux-bold). No monospace or second typeface is used.
+
+Sizes are tokens in `tailwind.config.ts` — use them, not raw `text-3xl`/`md:text-5xl`:
+
+| Token | Size (mobile → desktop) | Weight | Use |
+|---|---|---|---|
+| `text-display` | 36 → 64px | 300 | Home hero h1 |
+| `text-title` | 30 → 48px | 300 | Page h1, large numerals |
+| `text-heading` | 28 → 36px | 400 | Section h2 |
+| `text-subheading` | 18 → 22px | 500 | Card / step h3 |
+| `text-eyebrow` | 12px, +0.08em | 400 | With `uppercase` |
+| `text-base` / `text-lg` | 16 / 18px, line-height 1.6 | 400 | Body |
+| `text-sm` | 14px, line-height 1.5 | 400 | Supporting text |
+
+Buttons and nav are 500/400. Don't use `font-semibold`/`font-bold` outside the wordmark. Headings are `text-balance` and paragraphs `text-pretty` globally (see `index.css`).
+
+---|---|---|
+| `text-display` | 36 → 64px, 600, -0.035em | Home hero h1 |
+| `text-title` | 30 → 48px, 600 | Page h1 |
+| `text-heading` | 28 → 36px, 600 | Section h2 |
+| `text-subheading` | 18 → 22px, 600 | Card / step h3 |
+| `text-eyebrow` | 12px, 500, +0.06em | With `font-mono uppercase` |
+| `text-base` / `text-lg` | 16 / 18px, line-height 1.6 | Body |
+| `text-sm` | 14px, line-height 1.5 | Supporting text |
+
+Headings are `text-balance` and paragraphs `text-pretty` globally (see `index.css`).
 
 ---
 
@@ -47,8 +78,8 @@ Every section header is **left-aligned and width-constrained**, never `text-cent
 
 ```tsx
 <div className="mb-16 max-w-2xl">
-  <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">Eyebrow</p>
-  <h2 className="text-3xl text-foreground md:text-5xl">Headline</h2>
+  <p className="mb-3 font-mono text-eyebrow uppercase text-muted-foreground">Eyebrow</p>
+  <h2 className="text-heading text-foreground">Headline</h2>
   <p className="mt-4 text-lg text-muted-foreground">Supporting line.</p>
 </div>
 ```
@@ -60,11 +91,12 @@ The `max-w-2xl` inside a `max-w-6xl` container is what creates the asymmetry —
 | Section | Layout |
 |---------|--------|
 | **Hero** | Single column, left-aligned (`max-w-xl`) over a full-bleed Pixel Canvas background. Full viewport height (`100dvh − 4rem` header) so the next section is never visible on load. |
+| **Products** (`/products`, its own page — not on the home page) | Left header, 3 product cards with screenshots linking out. Reached from the navbar "Try our products" dropdown ("View all products"), the hero button and the footer. |
+| **Trust** | Pinned scroll-reveal (`TrustSection`): the section is `220svh` tall with a `sticky h-svh` inner; each word's opacity maps from 0.11 to 0.9 across scroll progress, in reading order. Reduced motion renders it static. |
 | **Features** | Left header + **asymmetric bento**. 3-col grid where cards at index 0, 3, 5 span 2 columns → rows read `[wide][narrow] / [narrow][wide] / [narrow][wide]`. Units sum to 9 so the grid fills exactly with no orphan gap. |
-| **How We Work** | Left header. 4 steps as top-bordered columns — the `border-t` doubles as the process timeline. |
 | **Pricing** | Header left, billing/currency controls pushed **right on the same row** (`justify-between`). Cards in an even 3-col grid — pricing is the one place symmetry is correct, since the tiers are peers. |
 | **FAQ** | Two columns. Heading left and `sticky` on desktop, accordion right. |
-| **Contact** | Single left-aligned column (`max-w-2xl`) — no form. Two CTAs only: `Book Free Call` (cal.com) and the `hello@` mailto: link. |
+| **Contact** | Single left-aligned column (`max-w-2xl`) — no form. Two CTAs only: `Book Free Call` (cal.com) and a Gmail-icon mailto: link to the founder's address. |
 
 ---
 
@@ -89,7 +121,7 @@ A card that needs a *static* distinguishing border (Pricing's "Most Popular" tie
 
 Single, non-grid cards (the AI-cost-transparency note, the About pull-quote) stay single-layer `glass-card rounded-2xl p-6` — no `GlowingEffect`. It is a grid-card signifier, not a blanket "every bordered box" treatment.
 
-There is no site-hosted contact form. `hello@`/`support@` mailto: links and the cal.com booking link are the only two contact paths — no backend, no data collection, nothing to fail silently.
+There is no site-hosted contact form. `support@`/founder mailto: links and the cal.com booking link are the only two contact paths — no backend, no data collection, nothing to fail silently.
 
 ---
 
@@ -113,7 +145,7 @@ Light is the default theme; dark is opt-in via the header toggle and persists in
 
 ## 6. Typography
 
-Geist Variable + Geist Mono, self-hosted from `/public/fonts` — no external request, no layout shift.
+Helvetica Neue system font stack — no font download, no layout shift from webfont loading.
 
 | Role | Spec |
 |------|------|

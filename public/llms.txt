@@ -1,54 +1,41 @@
-# 11startups.tech
+# 11Startups
 
-> Agentic AI & LLM integration for early-stage teams. From strategy to production-ready solutions.
+> 11Startups (11startups.tech) is an applied AI company. We develop and fine-tune language models, build products on top of them, and offer AI consulting to startups and enterprises.
 
-## About
+Products: CodeReportCard (a code-quality CLI on npm), Pebble mk1 (a 100k-parameter language model you train in your browser) and GrindSDE (interview-prep problem sets with C++ solutions). Full detail for each is in the documentation.
 
-11startups.tech is an AI consulting studio specializing in agentic AI and LLM integration for startups and enterprises. We offer end-to-end services — from strategy and prototyping to deployment, compliance, and ongoing support.
+## Products
+
+- [Products overview](https://www.11startups.tech/products): the three products with links.
+- [CodeReportCard](https://www.npmjs.com/package/codereportcard): zero-config code quality report card for React, JavaScript and TypeScript projects. Run `npx codereportcard .` (Node.js 18+, MIT). 324+ npm downloads.
+- [Pebble mk1 (100k Params)](https://how-llms-work.scalable-api-free.workers.dev/chatbot): train a tiny Qwen-style language model from scratch on your own CPU, in the browser, then chat with it.
+- [GrindSDE](https://grindsde.app/): NeetCode 150 and Striver's SDE Sheet, 341 problems with C++ solutions, templates and comparisons.
+
+## Documentation
+
+- [Product docs](https://www.11startups.tech/docs): install, usage flags, scoring, configuration and CI setup for CodeReportCard; how Pebble mk1 and GrindSDE work.
 
 ## Services
 
-- **AI Strategy Consulting**: Audit operations, identify high-impact AI use cases, and build a prioritised implementation roadmap.
-- **Rapid Prototyping**: Go from concept to working AI prototype in 2–4 weeks. Validate ideas fast with minimal investment.
-- **Workflow Automation**: Deploy intelligent AI agents that learn your processes and handle repetitive tasks like document processing and customer routing.
-- **Data Analytics & Insights**: Advanced ML pipelines and dashboards that surface hidden patterns for data-driven decision-making.
-- **AI Safety & Compliance**: Governance frameworks, bias auditing, and regulatory compliance (EU AI Act, etc.) for enterprise AI deployment.
-- **Ongoing Support & Optimisation**: Dedicated AI engineers monitor, fine-tune, and scale solutions post-launch.
+- [AI consulting services](https://www.11startups.tech/services): strategy, rapid prototyping, workflow automation, data analytics, AI safety and compliance, ongoing support.
+- [Pricing](https://www.11startups.tech/#pricing): Starter, Growth and Scale plans, monthly or yearly, in USD or INR.
 
-## Platform Capabilities
+## Company
 
-- Multi-Cloud Deployment (AWS, Azure, GCP)
-- Modular Architecture — plug-and-play AI modules
-- Security-First Architecture (end-to-end encryption, strict access controls, audit logging)
-- Real-Time Monitoring (accuracy, latency, drift)
-- Custom AI Agents (support bots, data extractors)
-- Continuous Learning (automatic model retraining)
-
-## Pricing
-
-Two currencies available (USD, INR incl. 18% GST) and monthly/yearly billing. AI usage (model tokens, inference, compute) is billed directly to the client's own provider accounts, not marked up.
-
-- **Starter** ($599/mo or ₹45,000/mo): AI readiness assessment, 1 consultation/month, email support, basic workflow analysis, implementation roadmap.
-- **Growth** ($1,799/mo or ₹1,35,000/mo, most popular): Everything in Starter plus 4 consultations/month, custom AI model prototyping, priority support, dedicated AI engineer, monthly performance reports.
-- **Scale** ($4,499/mo or ₹3,50,000/mo): Everything in Growth plus unlimited consultations, on-site workshops, AI safety & compliance audit, custom model training, 24/7 dedicated support.
-
-## Process
-
-1. **Discovery**: Deep-dive into business, data, and goals to pinpoint highest-value AI opportunities.
-2. **Design**: Architect a tailored solution — models, data pipelines, and integration points.
-3. **Build**: Develop, test, and iterate with weekly demos. We aim to ship a working prototype in under 4 weeks.
-4. **Deploy & Scale**: Launch to production with monitoring, support, and scaling plans.
-
-## Pages
-
-- [Home](https://11startups.tech/)
-- [Services](https://11startups.tech/services)
-- [About](https://11startups.tech/about)
-- [Privacy Policy](https://11startups.tech/privacy-policy)
-- [Support](https://11startups.tech/support)
+- [About](https://www.11startups.tech/about)
+- [Support and FAQ](https://www.11startups.tech/support)
+- [Privacy Policy](https://www.11startups.tech/privacy-policy), [Terms](https://www.11startups.tech/terms), [Disclaimer](https://www.11startups.tech/disclaimer)
 
 ## Contact
 
-- Email: support@11startups.tech
-- Privacy inquiries: privacy@11startups.tech
 - Book a call: https://cal.com/ash-28uynq/30min
+- Founder: founder.ashutoshm@11startups.tech
+- Support: support@11startups.tech
+- Privacy: privacy@11startups.tech
+- GitHub: https://github.com/11Startups/
+- LinkedIn: https://www.linkedin.com/company/11startups/
+- Product Hunt: https://www.producthunt.com/@11startups
+
+## Optional
+
+- [Full context for LLMs](https://www.11startups.tech/llms-full.txt): products, docs, services, pricing and FAQ in one file.

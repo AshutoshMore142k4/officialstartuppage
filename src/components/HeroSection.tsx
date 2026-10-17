@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { PixelCanvas } from '@/components/ui/pixel-canvas';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -27,18 +28,18 @@ export function HeroSection() {
         canvasClassName="opacity-[0.55]"
       >
         <div className="relative mx-auto w-full max-w-6xl px-4 py-14 sm:py-16 md:px-8">
-          <div className="max-w-xl">
-            <p className="mb-3 text-xs font-medium uppercase tracking-widest text-muted-foreground sm:mb-4 sm:text-sm">
-              Agentic AI &amp; LLM Integration
+          <div className="max-w-2xl">
+            <p className="mb-3 text-eyebrow uppercase text-muted-foreground sm:mb-4">
+              Applied AI Research
             </p>
 
-            <h1 className="text-[1.75rem] leading-[1.15] text-foreground sm:text-4xl sm:leading-tight md:text-6xl md:leading-[1.05]">
-              Beyond Automation. Building AI-Native Companies.
+            <h1 className="text-display text-foreground">
+              Research-driven AI, built into products.
             </h1>
 
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
-              We help ambitious startups evolve into AI-native businesses by integrating autonomous AI agents,
-              custom LLMs, and intelligent decision-making across products, operations, and customer experiences.
+            <p className="mt-4 max-w-xl text-base text-muted-foreground sm:mt-6 sm:text-lg">
+              11Startups is an applied AI company. We develop and fine-tune language models, build products on top of
+              them, and help ambitious teams take the same systems from prototype to production.
             </p>
 
             <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row">
@@ -48,7 +49,7 @@ export function HeroSection() {
                 </a>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <a href="#pricing">View pricing</a>
+                <Link to="/products">Try our products</Link>
               </Button>
             </div>
           </div>

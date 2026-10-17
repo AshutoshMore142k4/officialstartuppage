@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils';
 import NumberFlow from '@number-flow/react';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { GlowingEffect } from '@/components/ui/glowing-effect';
@@ -109,17 +109,24 @@ export { plans };
 
 export default function PricingSection() {
   const [isYearly, setIsYearly] = useState(false);
-  const [currency, setCurrency] = useState<'USD' | 'INR'>(() =>
-    typeof navigator !== 'undefined' && navigator.language?.toLowerCase().endsWith('-in') ? 'INR' : 'USD',
-  );
+  // USD on the server and on the first client render (so hydration matches the prerendered HTML),
+  // then INR for Indian locales. `animate` stays off until that switch has painted so the price
+  // doesn't roll from USD to INR on load.
+  const [currency, setCurrency] = useState<'USD' | 'INR'>('USD');
+  const [animate, setAnimate] = useState(false);
+  useEffect(() => {
+    if (navigator.language?.toLowerCase().endsWith('-in')) setCurrency('INR');
+    const id = requestAnimationFrame(() => setAnimate(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
 
   return (
     <section id="pricing" className="border-b border-border py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-4 md:px-8">
         <div className="mb-12 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
-            <p className="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">Pricing</p>
-            <h2 className="text-3xl text-foreground md:text-5xl">Plans that work best for you</h2>
+            <p className="mb-3 text-eyebrow uppercase text-muted-foreground">Pricing</p>
+            <h2 className="text-heading text-foreground">Plans that work best for you</h2>
             <p className="mt-4 text-lg text-muted-foreground">
               Explore which option is right for your business.
             </p>
@@ -170,12 +177,13 @@ export default function PricingSection() {
                 )}
 
                 <div className="mb-6">
-                  <h3 className="mb-1 text-lg font-semibold text-foreground">{plan.name}</h3>
+                  <h3 className="mb-1 text-subheading text-foreground">{plan.name}</h3>
                   <div className="my-4 flex flex-wrap items-baseline gap-1">
                     <span className="text-lg text-muted-foreground">{symbol}</span>
                     <NumberFlow
                       value={price}
-                      className="text-3xl font-semibold text-foreground sm:text-4xl"
+                      animated={animate}
+                      className="text-3xl font-light text-foreground sm:text-4xl"
                       locales={currency === 'INR' ? 'en-IN' : 'en-US'}
                       format={{ useGrouping: true }}
                     />

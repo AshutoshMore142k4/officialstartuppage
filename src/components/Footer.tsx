@@ -1,10 +1,29 @@
 import { Logo } from '@/components/Logo';
 import { Link } from 'react-router-dom';
+import { Github, Linkedin } from 'lucide-react';
+import { GmailIcon } from '@/components/GmailIcon';
+
+function ProductHuntIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
+      <path d="M13.604 8.4h-3.405V12h3.405c.995 0 1.801-.806 1.801-1.801 0-.993-.805-1.799-1.801-1.799zM12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm1.604 14.4h-3.405V18H7.801V6h5.804c2.319 0 4.2 1.88 4.2 4.199 0 2.321-1.881 4.201-4.201 4.201z" />
+    </svg>
+  );
+}
+
+const SOCIALS = [
+  { label: 'Email', href: 'mailto:founder.ashutoshm@11startups.tech', Icon: GmailIcon },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/11startups/', Icon: Linkedin },
+  { label: 'GitHub', href: 'https://github.com/11Startups/', Icon: Github },
+  { label: 'Product Hunt', href: 'https://www.producthunt.com/@11startups', Icon: ProductHuntIcon },
+];
 
 const footerLinks = {
   Company: [
     { label: 'About', href: '/about' },
     { label: 'Services', href: '/services' },
+    { label: 'Products', href: '/products' },
+    { label: 'Docs', href: '/docs' },
     { label: 'Pricing', href: '/#pricing' },
     { label: 'Support', href: '/support' },
   ],
@@ -15,7 +34,7 @@ const footerLinks = {
   ],
   Connect: [
     { label: 'Book a call', href: 'https://cal.com/ash-28uynq/30min' },
-    { label: 'hello@11startups.tech', href: 'mailto:hello@11startups.tech' },
+    ...SOCIALS.map(({ label, href }) => ({ label, href })),
   ],
 };
 
@@ -30,7 +49,7 @@ export function Footer() {
               <span className="text-base font-semibold text-foreground">11startups.tech</span>
             </div>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              AI consulting for early-stage teams. From strategy to production-ready solutions.
+              An applied AI company building language models and the products around them.
             </p>
           </div>
           {Object.entries(footerLinks).map(([category, items]) => (
@@ -65,6 +84,18 @@ export function Footer() {
         <div className="mt-12 flex flex-col items-center gap-3 border-t border-border pt-8 text-center sm:flex-row sm:justify-between">
           <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} 11startups.tech. All rights reserved.</p>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
+            {SOCIALS.map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target={href.startsWith('http') ? '_blank' : undefined}
+                rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                aria-label={label === 'Email' ? 'Email the founder' : `11Startups on ${label}`}
+                className="inline-flex min-h-11 min-w-11 items-center justify-center text-muted-foreground transition-colors hover:text-foreground active:text-foreground"
+              >
+                <Icon className="size-4" />
+              </a>
+            ))}
             <Link to="/privacy-policy" className="inline-flex min-h-11 items-center text-xs text-muted-foreground transition-colors hover:text-foreground active:text-foreground">
               Privacy Policy
             </Link>
